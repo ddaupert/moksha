@@ -1,0 +1,25 @@
+<h1>
+  [% IF quote_obj.quote_id %]Editing "[% quote_obj.title %]"
+  [% ELSE %]Adding a new quote[% END %]
+</h1>
+
+[% form.render %]
+
+<script language="javascript" type="text/javascript">
+<!--
+$(function () {
+    $('#ts').datepicker({  dateFormat: 'yy-mm-dd', showOn: 'button', buttonText: 'Choose' });
+
+    var tags = [];
+    [% IF tags.count; FOREACH tag IN tags.all %]tags.push("[% tag.name %]");[% END; END %]
+
+    $('#tags_str').autocomplete(tags,
+	  {     autoFill: true,
+		selectFirst: true,
+		mustMatch: false,
+		multiple: true
+	  });
+});    
+//-->
+</script>
+

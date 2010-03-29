@@ -1,0 +1,8 @@
+<h1>
+  [% IF item.id %]Editing "[% item.role %]"
+  [% ELSE %]Adding a new role[% END %]
+</h1>
+
+[% form.render %]
+
+

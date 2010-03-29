@@ -1,0 +1,17 @@
+<h1>Site Blog</h1>
+
+[% WHILE (article = articles.next) %]
+<div class="article">
+  <h2>[% article.title %]</h2>
+  <p class="content">
+    [% article.summary %]
+  </p>
+  <p class="ops">
+    Posted [% article.ts.strftime('%b %d, %Y') %] at [% article.ts.strftime('%I:%M %P') %]
+    <br />
+    <a href="[% c.action_uri('Article', 'edit', [article.article_id]) %]">[edit]</a>
+  </p>
+</div>
+[% END %]
+
+<a href="[% c.action_uri('Article', 'add') %]">[ADD NEW ARTICLE]</a>

@@ -1,0 +1,12 @@
+[%  site = {
+    name          = 'MokshaWorks'
+    server        = 'http://localhost'
+    homepage      = 'index.tt2'
+    admin         = 'ddaupert@sbcglobal.net'
+    copywrite     = '2010 Dr Hackermann'
+    emailserver   = 'localhost'
+    IDAdminEmail  = 'ddaupert@sbcglobal.net'
+    DefCountrytId = '228'
+    DefCountry    = 'North America'
+    }
+-%]

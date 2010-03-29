@@ -1,0 +1,15 @@
+<h1>Address List</h1>
+
+[% WHILE (address = addresses.next) %]
+<div class="address">
+  [% address.address1 %]<br />
+  [% address.address2 %]<br />
+  [% address.city %]<br />
+  [% address.state %]<br />
+  [% address.zip %]<br />
+    <a href="[% c.action_uri('Address', 'edit', [address.id]) %]">[edit]</a>
+  </p>
+</div>
+[% END %]
+
+<a href="[% c.action_uri('Address', 'add') %]">[ADD NEW ADDRESS]</a>

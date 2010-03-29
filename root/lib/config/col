@@ -1,0 +1,44 @@
+[%  rgb = {
+    white    = '#FFFFFF'
+    black    = '#000000'
+    red      = '#ED2328'
+    orange   = '#F08900'
+    skyblue  = '#00AAF0'
+    paleblue = '#E2EFFF'
+    midblue  = '#6080C0'
+    darkblue = '#202060'
+    blueegg  = '#d0e1f5'
+    bluesky  = '#98c2f0'
+    blueslate = '#7d9fc4'
+    misty    = '#C0C0F0'
+    ltgrey   = '#E0E0E0'
+    vltgrey  = '#F0F0F0'
+    }
+ 
+    site.rgb = rgb
+    site.col = {
+    back  = rgb.white
+    text  = rgb.black
+    link  = rgb.skyblue
+    vlink = rgb.midblue
+    alink = rgb.red
+    mlink = rgb.orange
+    line  = rgb.skyblue
+    head  = rgb.darkblue
+    tablehead = rgb.bluesky
+    tablebg = rgb.bluesky
+    bgbluesky = rgb.bluesky
+    }
+
+    site.tbl = {
+    headdrk = rgb.blueslate
+    headmed = rgb.bluesky
+    headlit = rgb.blueegg
+    trdrk = rgb.blueslate
+    trmed = rgb.bluesky
+    trlit = rgb.blueegg
+    tddrk = rgb.blueslate
+    tdmed = rgb.bluesky
+    tdlit = rgb.blueegg
+    }
+-%]

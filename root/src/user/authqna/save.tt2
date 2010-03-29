@@ -1,0 +1,49 @@
+<h1>
+  [% IF item.id %]Editing Auth Questions
+  [% ELSE %]Setting Auth Questions[% END %]
+</h1>
+
+<form id="form_qna" method="post" >
+<fieldset class="main_fieldset">
+<div>
+[% f1 = form.field('quest1_fk') %]
+<label class="label" for="[% f1.name %]">[% f1.label %]</label>
+<select name="[% f1.name %]">
+  [% FOR option IN f1.options %]
+    <option value="[% option.value %]" 
+    [% IF option.value == f1.fif %]selected="selected"[% END %]>
+    [% option.label | html %]</option>
+  [% END %] 
+</select>
+</div>
+<div>
+[% f2 = form.field('answer1') %]
+<label class="label" for="[% f2.name %]">[% f2.label %]:</label>
+<input type="text" name="[% f2.name %]" id="[% f2.name %]" value="[% f2.fif %]">
+</div>
+
+<div>
+[% f3 = form.field('quest2_fk') %]
+<label class="label" for="[% f3.name %]">[% f3.label %]</label>
+<select name="[% f3.name %]">
+  [% FOR option IN f3.options %]
+    <option value="[% option.value %]" 
+    [% IF option.value == f3.fif %]selected="selected"[% END %]>
+    [% option.label | html %]</option>
+  [% END %] 
+</select>
+</div>
+<div>
+[% f4 = form.field('answer2') %]
+<label class="label" for="[% f4.name %]">[% f4.label %]:</label>
+<input type="text" name="[% f4.name %]" id="[% f4.name %]" value="[% f4.fif %]">
+</div>
+<div>
+[% f8 = form.field('user_fk') %]
+<input type="hidden" name="[% f8.name %]" id="[% f8.name %]" value="[% f8.fif %]">
+</div>
+<div>
+[% f9 = form.field('submit') %]
+<input type="submit" name="[% f9.name %]" id="[% f9.name %]" value="Save">
+</div>
+</fieldset></form>

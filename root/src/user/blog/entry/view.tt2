@@ -1,0 +1,5 @@
+[% META title = 'Entry ' %]
+[% SET entry_id = entry_obj.id %]
+
+<h3>[% entry_obj.content %]</h3>
+<h3>[% entry_obj.created %]</h3>

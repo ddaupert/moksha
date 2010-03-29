@@ -1,0 +1,57 @@
+<h1>
+  [% IF item.id %]Editing Clear Reality
+  [% ELSE %]Clear Reality[% END %]
+</h1>
+
+<form id="form_clear" method="post" >
+<fieldset class="main_fieldset">
+<div>
+[% f_situ = form.field('situation') %]
+<label class="label" for="[% f_situ.name %]">[% f_situ.label %]:</label>
+<textarea wrap="physical" name="[% f_situ.name %]" id="[% f_situ.name %]">
+[% f_situ.fif %]
+</textarea>
+</div>
+<div>
+[% f_char = form.field('charge') %]
+<label class="label" for="[% f_char.name %]">[% f_char.label %]:</label>
+<input type="text" name="[% f_char.name %]" id="[% f_char.name %]" value="[% f_char.fif %]">
+</div>
+<div>
+[% f_int = form.field('intensity') %]
+<label class="label" for="[% f_int.name %]">[% f_int.label %]:</label>
+<select name="[% f_int.name %]">
+  [% FOR option IN f_int.options %]
+    <option value="[% option.value %]" 
+    [% IF option.value == f_int.fif %]selected="selected"[% END %]>
+    [% option.label | html %]</option>
+  [% END %] 
+</select>
+</div>
+<div>
+[% f_bel = form.field('belief') %]
+<label class="label" for="[% f_bel.name %]">[% f_bel.label %]:</label>
+<textarea wrap="physical" name="[% f_bel.name %]" id="[% f_bel.name %]">
+[% f_bel.fif %]
+</textarea>
+</div>
+<div>
+[% f_done = form.field('is_done') %]
+<label class="label" for="[% f_done.name %]">[% f_done.label %]:</label>
+<select name="[% f_done.name %]">
+  [% FOR option IN f_done.options %]
+    <option value="[% option.value %]" 
+    [% IF option.value == f_done.fif %]selected="selected"[% END %]>
+    [% option.label | html %]</option>
+  [% END %] 
+</select>
+</div>
+<div>
+[% f_user = form.field('user_id') %]
+<input type="hidden" name="[% f_user.name %]" id="[% f_user.name %]" value="[% f_user.fif %]">
+</div>
+<div>
+[% f9 = form.field('submit') %]
+<input type="submit" name="[% f9.name %]" id="[% f9.name %]" value="Save">
+</div>
+</fieldset></form>

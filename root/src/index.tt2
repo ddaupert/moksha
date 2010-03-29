@@ -1,0 +1,31 @@
+[% META title = 'MokshaWorks Home Page' %]
+<p>&nbsp;</p>
+<center>
+<h1>MokshaWorks</h1>
+</center>
+<p>&nbsp;</p>
+<h3>Dedicated to consciousness transformation and spiritual enlightenment.</h3>
+<p>&nbsp;</p>
+<h3>What does MokshaWorks offer?</h3>
+<p>&nbsp;</p>
+<ul>
+<li>Wakeup Tales</li>
+<li>Quote Bank</li>
+<li>Photo Gallery</li>
+<li>Sangha Forum</li>
+</ul>
+<p>&nbsp;</p>
+<h3>What do members get?</h3>
+<p>&nbsp;</p>
+<ul>
+<li>Unlimited mokshas</li>
+<li>Member Wakeup Tales</li>
+<li>Tools for Inquiry</li>
+</ul>
+<p>&nbsp;</p>
+<p>
+    [% IF c.check_user_roles('is_superuser') %]
+      [% # Give normal users a link for 'logout' %]
+      <a href="[% c.uri_for('/logout') %]">Superuser Logout</a>
+    [% END %]
+ </p>

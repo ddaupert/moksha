@@ -1,0 +1,6 @@
+<h1>
+  [% IF item.author_id %]Editing Author
+  [% ELSE %]Adding a new author[% END %]
+</h1>
+
+[% form.render %]

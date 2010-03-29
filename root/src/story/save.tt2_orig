@@ -1,0 +1,28 @@
+<h1>
+  [% IF story_obj.id %]Editing "[% story_obj.title %]"
+  [% ELSE %]Adding a new story[% END %]
+</h1>
+<h3>
+  [% IF quote_obj.id %]Inspired by this quote: "[% quote_obj.quote %]"[% END %]
+</h3>
+
+[% form.render %]
+
+<script language="javascript" type="text/javascript">
+<!--
+$(function () {
+    $('#ts').datepicker({  dateFormat: 'yy-mm-dd', showOn: 'button', buttonText: 'Choose' });
+
+    var tags = [];
+    [% IF tags.count; FOREACH tag IN tags.all %]tags.push("[% tag.name %]");[% END; END %]
+
+    $('#tags_str').autocomplete(tags,
+	  {     autoFill: true,
+		selectFirst: true,
+		mustMatch: false,
+		multiple: true
+	  });
+});    
+//-->
+</script>
+

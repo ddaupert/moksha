@@ -1,0 +1,14 @@
+<h1>Auth Question List</h1>
+
+[% WHILE (q = authquestions.next) %]
+<div class="q">
+  <p class="content">
+    [% q.question %]
+  </p>
+  <p class="ops">
+    <a href="[% c.action_uri('AuthQuestion', 'edit', [q.id]) %]">[edit]</a>
+  </p>
+</div>
+[% END %]
+
+<a href="[% c.action_uri('AuthQuestion', 'add') %]">[ADD NEW AUTH QUESTION]</a>

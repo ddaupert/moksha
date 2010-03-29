@@ -1,0 +1,17 @@
+<h1>Inquiry Situation List</h1>
+<p>&nbsp;</p>
+[% SET inquiry_id = inquiry_obj.inquiry_id %]
+<a href="[% c.uri_for("/inquiry/$inquiry_id/situation/add") %]">[NEW SITUATION]</a>
+[% WHILE (situation = situations.next) %]
+[% SET situation_id = situation.id %]
+<div class="situation">
+  <p class="content">
+  <h3>[% situation.situation %]</h3>
+  </p>
+  <p class="ops">
+    <a href="[% c.uri_for("/inquiry/$inquiry_id/situation/$situation_id/edit") %]">[edit]</a>
+    <a href="[% c.uri_for("/inquiry/$inquiry_id/situation/$situation_id/view") %]">[view]</a>
+  </p>
+</div>
+<hr>
+[% END %]

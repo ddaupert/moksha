@@ -1,0 +1,20 @@
+<h1>User's Authentication Questions and Answers </h1>
+
+[% WHILE (qna = qna_obj.next) %]
+[% SET user_id = qna.user_fk %]
+[% SET authqna_id = qna.id %]
+<div class="qna">
+  <h2>[% qna.b2_quest1.question %]</h2>
+  <h2>[% qna.answer1 %]</h2>
+  <h2>[% qna.b2_quest2.question %]</h2>
+  <h2>[% qna.answer2 %]</h2>
+<br />
+<!--
+    <a href="[% c.action_uri('AuthQnA', 'edit', [$user_id]) %]">[edit]</a>
+-->
+    <a href="[% c.uri_for("/user/$user_id/authqna/$authqna_id/edit") | html %]">[edit]</a>
+    <hr />
+</div>
+[% END %]
+
+<a href="[% c.uri_for("/user/$user_id/authqna/add") | html -%]">[SET AUTH QnA]</a>

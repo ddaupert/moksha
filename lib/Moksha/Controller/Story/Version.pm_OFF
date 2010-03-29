@@ -1,0 +1,263 @@
+package moksha::Controller::Story::Version;
+
+use strict;
+use warnings;
+use parent 'Catalyst::Controller::HTML::FormFu';
+
+=head1 NAME
+
+moksha::Controller::Story::Versions - Catalyst Controller
+
+=head1 DESCRIPTION
+
+Catalyst Controller.
+
+=head1 METHODS
+
+=cut
+
+
+=head2 index 
+
+=cut
+
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+
+    $c->response->body('Matched moksha::Controller::Story::Versions in moksha::Controller::Story::Versions.');
+}
+
+################
+
+=head2 base
+
+=cut
+
+# url /story/versions
+sub base :Chained("/story/id") :PathPart("versions") :CaptureArgs(0) {
+  my ( $self, $c ) = @_;
+
+  $c->log->debug("*** Story::Versions::base ***");
+
+  # Store the ResultSet in stash so it's available for other methods
+  $c->stash->{versions_rs} = $c->model('MokshaDB::StoryVersions');
+
+}
+
+################
+
+=head2 id
+
+=cut
+
+# url /story/*/versions/*
+sub id :Chained("base") :PathPart("") :CaptureArgs(1) {
+  my ( $self, $c, $version ) = @_;
+
+  $c->log->debug("*** Story::Versions::id ***");
+
+  my $story_id         = $c->stash->{story_id};
+  $c->stash->{version} = $version;
+
+#   $c->stash(version_obj => $c->stash->{versions_rs}->find($story_id,$version));
+
+  $c->stash(version_obj => $c->stash->{versions_rs}->get_story_version( $story_id, $version ));
+
+#   $c->stash->{story} 
+#     = $versions_rs->get_story_version( $story_id, $version );
+
+
+    
+  # Make sure we were able to get an version
+  if ( !$c->stash->{version_obj} ) {
+      $c->flash->{error_msg} = "Invalid version -- Cannot find in database";
+      $c->response->redirect($c->uri_for($self->action_for('list')));
+      $c->detach;
+  }
+
+}
+
+################
+
+=head2 list
+
+=cut
+
+# url /story/*/versions/list (end of chain)
+sub list :Chained("base") :PathPart("list") :Args(0) {
+  my ( $self, $c ) = @_;
+
+  $c->log->debug("*** Story::Versions::list ***");
+
+  my $story_id = $c->stash->{story_id};
+  my $versions_rs = $c->stash->{versions_rs};
+
+  $c->stash->{versions} 
+    = $versions_rs->get_story_versions( $story_id );
+
+  $c->stash->{template} = 'story/versions/list.tt2';
+
+}
+
+################
+################
+
+=head2 view
+
+=cut
+
+# url /story/*/versions/*/view (end of chain)
+sub view :Chained("id") :PathPart("view") :Args(0) {
+  my ( $self, $c ) = @_;
+
+  $c->log->debug("*** Story::Versions::view ***");
+
+  my $story_id    = $c->stash->{story_id};
+  my $versions_rs = $c->stash->{versions_rs};
+  my $version     = $c->stash->{version};
+
+#   $c->stash->{story} 
+#     = $versions_rs->get_story_version( $story_id, $version );
+
+  $c->stash->{story} = $c->stash->{version_obj};
+
+  $c->stash->{template} = 'story/versions/view.tt2';
+}
+
+################
+
+=head2 edit 
+
+=cut
+
+# url /story/*/versions/*/edit (end of chain)
+sub edit :Chained("id") :PathPart("edit") :Args(0) :FormConfig {
+  my ( $self, $c ) = @_;
+
+  $c->log->debug("*** Story::Versions::edit ***");
+
+  my $logged_in_user_id = $c->stash->{user_id};
+
+  my $story_id    = $c->stash->{story_id};
+  my $version     = $c->stash->{version};
+
+  my $story_obj   = $c->stash->{story_obj};
+  my $version_obj = $c->stash->{version_obj};
+
+  my $form = $c->stash->{form};
+
+  if ($form->submitted_and_valid) {
+
+# TODO: TEST THIS!!
+#     # Check permissions -- logged-in user can edit his/her own version
+#     if ( $logged_in_user_id == $version_obj->b2_assignee->id
+#       || $c->assert_user_roles( qw/admin/ ) ) {
+#       # ok to edit
+#     }
+#     else {
+#       $c->detach('/error_noperms');
+#     }
+
+    $c->detach('/error_noperms') 
+        if ! $c->assert_any_user_role( qw/admin developer/ );
+
+    eval {
+      $form->model->update($version_obj);
+    };
+
+    # TODO: we need to get the highest status id,
+    # instead of hard code the status name
+    my $status_name = $version_obj->b2_status->status;
+
+    if ( $status_name eq 'Published' ) {
+#       $c->model('MokshaDB::Story')->set_story_inactive($story_obj);
+    }
+   
+
+    if ( $@ ) {
+      $c->flash->{error_msg} = "Error Editing Story Version: $@";
+      $c->response->redirect($c->uri_for("/story/list")); 
+      $c->detach;
+    }
+    else {
+      $c->flash->{status_msg} = 'Story Version Edit Succeeded';
+      $c->response->redirect($c->uri_for("/story/list")); 
+      $c->detach;
+    }
+
+  }
+  else {
+    $form->model->default_values($version_obj);
+  }
+
+  $c->stash->{template} = 'story/versions/edit.tt2';
+}
+
+################
+
+=head2 delete 
+
+=cut
+
+# url /story/*/versions/*/delete (end of chain)
+sub delete :Chained("id") :PathPart("delete") :Args(0) :FormConfig {
+  my ( $self, $c ) = @_;
+
+  $c->log->debug("*** Story::Versions::delete ***");
+
+  my $story_id    = $c->stash->{story_id};
+  my $versions_rs = $c->stash->{versions_rs};
+  my $version     = $c->stash->{version};
+
+  my $version_obj = $c->stash->{version_obj};
+
+  my $form = $c->stash->{form};
+
+  if ($form->submitted_and_valid) {
+
+    # Check permissions
+    $c->detach('/error_noperms') 
+        if ! $c->assert_any_user_role( qw/admin developer/ );
+
+#     # Check permissions
+#       $c->detach('/error_noperms') 
+#           unless $version_obj->delete_allowed_by($c->user->get_object);
+
+    eval {
+      $version_obj->delete;
+    };
+
+    if ( $@ ) {
+      $c->flash->{error_msg} = "Error deleting Version: $@";
+      $c->response->redirect($c->uri_for("/story/$story_id/versions/list")); 
+      $c->detach;
+    }
+    else {
+      $c->flash->{status_msg} = 'Version Deleted';
+      $c->response->redirect($c->uri_for("/story/$story_id/versions/list")); 
+      $c->detach;
+    }
+
+  }
+  else {
+
+  }
+
+  $c->stash->{template} = 'story/versions/delete.tt2';
+}
+
+################
+
+
+=head1 AUTHOR
+
+perl
+
+=head1 LICENSE
+
+This library is free software, you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+
+1;

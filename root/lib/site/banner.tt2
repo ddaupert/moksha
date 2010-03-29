@@ -1,0 +1,16 @@
+<!-- banner -->
+<div id="banner">
+<div id="logo"><img src="/static/images/mylogo80_xparent.gif" /></div>
+<div id="site_name">[% site.name %]</div>
+<div id="nav">
+  <ul>
+    <li><a href="/" id="homeLink">Home</a></li>
+    <li><a href="/features/index.html" id="featureLink">Features</a></li>
+    <li><a href="/experts/index.html" id="expertLink">Experts</a></li>
+    <li><a href="/quiz/index.html" id="quizLink">Quiz</a></li>
+    <li><a href="/projects/index.html" id="projectLink">Projects</a></li>
+    <li><a href="/horoscopes/index.html" id="horoscopeLink">Horoscopes</a></li>
+   </ul>
+</div>
+</div>
+<!-- end banner -->

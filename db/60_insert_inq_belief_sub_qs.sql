@@ -1,0 +1,12 @@
+INSERT INTO inq_belief_sub_qs VALUES(1,'What emotions happen when you believe that thought?');
+INSERT INTO inq_belief_sub_qs VALUES(2,'Does that thought bring peace or stress into your life?');
+INSERT INTO inq_belief_sub_qs VALUES(3,'What images do you see, past and future, when you believe that thought?');
+INSERT INTO inq_belief_sub_qs VALUES(4,'Describe the physical sensations that happen when you believe that thought?');
+INSERT INTO inq_belief_sub_qs VALUES(5,'How do you treat that person and others when you believe that thought?');
+INSERT INTO inq_belief_sub_qs VALUES(6,'How do you treat yourself when you believe that thought?');
+INSERT INTO inq_belief_sub_qs VALUES(7,'What addictions/obsessions begin to manifest when you believe that thought?');
+INSERT INTO inq_belief_sub_qs VALUES(8,'Where and at what age did that thought first occur to you?');
+INSERT INTO inq_belief_sub_qs VALUES(9,'Whose business are you in mentally when you believe that thought?');
+INSERT INTO inq_belief_sub_qs VALUES(10,'What is the payoff for holding on to that belief?');
+INSERT INTO inq_belief_sub_qs VALUES(11,'What do you fear would happen if you did not believe that thought?');
+INSERT INTO inq_belief_sub_qs VALUES(12,'What are you not able to do when you believe that thought?');

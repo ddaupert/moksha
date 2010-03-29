@@ -1,0 +1,82 @@
+<h2>
+  [% IF story_obj.id -%]Editing "[% story_obj.title -%]"
+  [% ELSE -%]Adding a new story[% END -%]
+</h2>
+[% IF quote_obj.id -%]
+<br />
+<h3>Inspired by this quote: </h3>
+<br />
+<h2>[% quote_obj.quote -%]</h2>
+[% END -%]
+[% IF parent_id -%]
+<br />
+<h3>Inspired by this story:</h3> 
+<br />
+<h2>[% parent_title -%]</h2>
+[% END -%]
+
+<form id="form_story" method="post" >
+<fieldset class="main_fieldset">
+<div>
+[% f_title = form.field('title') -%]
+<label class="label" for="[% f_title.name -%]">[% f_title.label -%]:</label>
+<input type="text" name="[% f_title.name -%]" id="[% f_title.name -%]" value="[% f_title.fif -%]">
+</div>
+<div>
+[% f_content = form.field('content') -%]
+<label class="label" for="[% f_content.name -%]">[% f_content.label -%]:</label>
+<textarea name="[% f_content.name -%]" id="[% f_content.name -%]" class="wymeditor">
+[% f_content.fif -%]
+</textarea>
+</div>
+<div>
+[% f_tags = form.field('tags_str') -%]
+<label class="label" for="[% f_tags.name -%]">[% f_tags.label -%]:</label>
+<input type="textarea" name="[% f_tags.name -%]" id="[% f_tags.name -%]" value="[% f_tags.fif -%]">
+</div>
+<div>
+[% f_active = form.field('active') -%]
+<input type="hidden" name="[% f_active.name -%]" id="[% f_active.name -%]" value="[% f_active.fif -%]">
+</div>
+<div>
+[% f_user = form.field('user_id') -%]
+<input type="hidden" name="[% f_user.name -%]" id="[% f_user.name -%]" value="[% f_user.fif -%]">
+</div>
+<div>
+[% f_story = form.field('inspire_story') -%]
+<input type="hidden" name="[% f_story.name -%]" id="[% f_story.name -%]" value="[% f_story.fif -%]">
+</div>
+<div>
+[% f_quote = form.field('inspire_quote') -%]
+<input type="hidden" name="[% f_quote.name -%]" id="[% f_quote.name -%]" value="[% f_quote.fif -%]">
+</div>
+<div>
+[% f_photo = form.field('inspire_photo') -%]
+<input type="hidden" name="[% f_photo.name -%]" id="[% f_photo.name -%]" value="[% f_photo.fif -%]">
+</div>
+<div>
+[% f_submit = form.field('submit') -%]
+<input type="submit" name="[% f_submit.name -%]" id="[% f_submit.name -%]" class="wymupdate" value="Save">
+</div>
+</fieldset>
+</form>
+
+<script language="javascript" type="text/javascript">
+<!--
+$(function () {
+
+    jQuery(".wymeditor").wymeditor();
+
+    var tags = [];
+    [% IF tags.count; FOREACH tag IN tags.all -%]tags.push("[% tag.name -%]");[% END; END -%]
+
+    $('#tags_str').autocomplete(tags,
+	  {     autoFill: true,
+		selectFirst: true,
+		mustMatch: false,
+		multiple: true
+	  });
+});    
+//-->
+</script>
+

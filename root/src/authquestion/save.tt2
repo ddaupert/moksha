@@ -1,0 +1,6 @@
+<h1>
+  [% IF item.id %]Editing Auth Question
+  [% ELSE %]Adding a new question[% END %]
+</h1>
+
+[% form.render %]

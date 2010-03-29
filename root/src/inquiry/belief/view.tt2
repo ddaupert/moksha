@@ -1,0 +1,10 @@
+[% META title = 'Belief List' %]
+[% SET inquiry_id = inquiry_obj.id %]
+[% SET belief_id = belief_obj.id %]
+<h3>[% belief_obj.id %]</h3>
+<h3>[% belief_obj.belief %]</h3>
+<h3>[% belief_obj.b2_users.fname %] [% belief_obj.b2_users.lname %]</h3>
+<h3>[% belief_obj.created %]</h3>
+
+<a href="[% c.uri_for("/inquiry/$inquiry_id/belief/list") %]">[LIST]</a>
+<a href="[% c.uri_for("/inquiry/$inquiry_id/belief/add") %]">[ADD BELIEF]</a>

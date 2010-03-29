@@ -1,0 +1,18 @@
+<h1>Quote List</h1>
+<a href="[% c.action_uri('Quote', 'add') %]">[ADD NEW QUOTE]</a>
+<p>&nbsp;</p>
+[% WHILE (quote = quotes.next) -%]
+<div class="quote">
+  <p class="content">
+  <h3>[% quote.quote %] -- [% quote.b2_authors.known_as %]</h3>
+  </p>
+  <p class="ops">
+    Posted [% quote.created.strftime('%b %d, %Y') -%] 
+&nbsp;at [% quote.created.strftime('%I:%M %P') -%]
+&nbsp;by [% quote.b2_users.fname %] [% quote.b2_users.lname -%]<br />
+    <a href="[% c.action_uri('Quote', 'edit', [quote.id]) %]">[edit]</a>
+    <a href="[% c.action_uri('Quote', 'view', [quote.id]) %]">[view]</a>
+  </p>
+</div>
+<hr>
+[% END %]

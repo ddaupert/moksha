@@ -1,0 +1,41 @@
+
+Once Moksha is unpacked, you need to create and populate a database.
+
+Currently, database settings point to Postgresql 
+in Moksha/lib/Moksha/Model/DB.pm
+Modify database server, user, database, password, based on your
+chosen server, etc.
+
+If using Postgresql, Mysql you will need to follow that db server's
+procedures to create your database, user, password. For Postgresql,
+you can use these instructions (modify username, password, 
+databasename to your needs):
+
+1. sudo su postgres
+2. psql
+3. CREATE ROLE username PASSWORD 'password' NOSUPERUSER CREATEDB NOCREATEROLE INHERIT LOGIN;
+4. CREATE DATABASE databasename OWNER username ENCODING 'UTF8';
+
+If using Sqlite, create your database file:
+sqlite3 moksha.db
+
+Then configure for it in Moksha/lib/Moksha/Model/DB.pm
+
+You can create the database tables by executing the command-line in the 
+file Moksha/db/create_database_from_schema.txt. You need to
+be in the Moksha directory when you run the code.
+
+Once your database and tables are created, populate the tables
+by executing the sql statements, in order, of the sql files
+in Moksha/db directory using the following command and flags
+(modify to suit):
+
+psql -U moksha -d moksha -f /path/to/db/10_insert_users.sql
+psql -U moksha -d moksha -f /path/to/db/20_insert_roles.sql
+psql -U moksha -d moksha -f /path/to/db/30_insert_user_roles.sql
+psql -U moksha -d moksha -f /path/to/db/40_insert_auth_questions.sql
+psql -U moksha -d moksha -f /path/to/db/50_insert_inq_types.sql
+psql -U moksha -d moksha -f /path/to/db/60_insert_inq_belief_sub_qs.sql
+
+
+Run script/moksha_server.pl to test the application.

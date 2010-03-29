@@ -1,0 +1,10 @@
+<h1>Role List</h1>
+<a href="[% c.action_uri('Role', 'add') %]">[ADD NEW ROLE]</a>
+[% WHILE (role = roles.next) -%]
+<div class="role">
+  <p class="ops">
+   [% role.role %] <a href="[% c.action_uri('Role', 'edit', [role.id]) %]">[edit]</a>
+<a href="[% c.action_uri('Role', 'delete', [role.id]) %]">[delete]</a>
+  </p>
+</div>
+[% END %]

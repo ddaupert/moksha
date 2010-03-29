@@ -1,0 +1,11 @@
+<h1>User List</h1>
+<a href="[% c.action_uri('User', 'add') %]">[ADD NEW USER]</a>
+<p>&nbsp;</p>
+[% WHILE (user = users.next) %]
+<div class="user">
+  <h3>[% user.fname %] [% user.lname %] :: [% user.username %]
+    <a href="[% c.action_uri('User', 'edit', [user.id]) %]">[edit]</a>
+  </h3>
+    <hr />
+</div>
+[% END %]

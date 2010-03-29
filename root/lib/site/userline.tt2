@@ -1,0 +1,4 @@
+<div id="userline">
+User: [% c.user.username %] [% FOR role = c.user.m2m_roles %] :: [% role.role %][% END %]
+
+</div>

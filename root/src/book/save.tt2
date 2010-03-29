@@ -1,0 +1,82 @@
+<h1>
+  [% IF item.book_id %]Editing "[% item.title %]"
+  [% ELSE %]Adding a new book[% END %]
+</h1>
+
+<form id="form_book" method="post" >
+<fieldset class="main_fieldset">
+<div>
+[% f_title = form.field('title')- %]
+<label class="label" for="[% f_title.name %]">[% f_title.label %]:</label>
+<input type="text" name="[% f_title.name %]" id="[% f_title.name %]" value="[% f_title.fif %]">
+</div>
+
+<div>
+[% f_subtitle = form.field('subtitle')- %]
+<label class="label" for="[% f_subtitle.name %]">[% f_subtitle.label %]:</label>
+<input type="text" name="[% f_subtitle.name %]" id="[% f_subtitle.name %]" value="[% f_subtitle.fif %]">
+</div>
+
+<div>
+[% f_m2m_authors = form.field('m2m_authors') -%]
+<label class="label" for="[% f_m2m_authors.name %]">[% f_m2m_authors.label %]</label>
+<select name="[% f_m2m_authors.name %]">
+  [% FOR option IN f_m2m_authors.options -%]
+    <option value="[% option.value -%]"[% IF option.value == f_m2m_authors.fif- %]selected="selected"[% END -%]>
+    [% option.label | html -%]</option>
+  [% END -%] 
+</select>
+</div>
+<div>
+[% f_url = form.field('url') -%]
+<label class="label" for="[% f_url.name %]">[% f_url.label %]:</label>
+<input type="text" name="[% f_url.name %]" id="[% f_url.name %]" value="[% f_url.fif %]">
+</div>
+<div>
+[% f_rating = form.field('rating') -%]
+<label class="label" for="[% f_rating.name %]">[% f_rating.label %]</label>
+<select name="[% f_rating.name %]">
+  [% FOR option IN f_rating.options -%]
+    <option value="[% option.value -%]"[% IF option.value == f_rating.fif- %]selected="selected"[% END -%]>
+    [% option.label | html -%]</option>
+  [% END -%] 
+</select>
+</div>
+<div>
+[% f_tag = form.field('tags_str') -%]
+<label class="label" for="[% f_tag.name %]">[% f_tag.label %]:</label>
+<input type="text" name="[% f_tag.name %]" id="[% f_tag.name %]" value="[% f_tag.fif %]">
+</div>
+<div>
+[% f_posted_by = form.field('posted_by') -%]
+<input type="hidden" name="[% f_posted_by.name %]" id="[% f_posted_by.name %]" value="[% f_posted_by.fif %]">
+</div>
+<div>
+[% f_active = form.field('active')- %]
+<input type="hidden" name="[% f_active.name %]" id="[% f_active.name %]" value="[% f_active.fif %]">
+</div>
+<div>
+[% f_submit = form.field('submit') -%]
+<input type="submit" name="[% f_submit.name %]" id="[% f_submit.name %]" value="Save">
+</div>
+</fieldset>
+</form>
+
+<script language="javascript" type="text/javascript">
+<!--
+$(function () {
+    $('#ts').datepicker({  dateFormat: 'yy-mm-dd', showOn: 'button', buttonText: 'Choose' });
+
+    var tags = [];
+    [% IF tags.count; FOREACH tag IN tags.all %]tags.push("[% tag.name %]");[% END; END %]
+
+    $('#tags_str').autocomplete(tags,
+	  {     autoFill: true,
+		selectFirst: true,
+		mustMatch: false,
+		multiple: true
+	  });
+});    
+//-->
+</script>
+

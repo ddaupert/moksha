@@ -1,0 +1,92 @@
+<h1>
+  [% IF quote_obj.quote_id %]Editing "[% quote_obj.title %]"
+  [% ELSE %]Adding a new quote[% END %]
+</h1>
+<form id="form_quote" method="post" >
+<fieldset class="main_fieldset">
+<div>
+[% f_quote = form.field('quote') -%]
+<label class="label" for="[% f_quote.name -%]">[% f_quote.label -%]:</label>
+<textarea name="[% f_quote.name -%]" id="[% f_quote.name -%]" class="wymeditor"> 
+[% f_quote.fif -%]
+</textarea>
+</div>
+<div>
+[% f_title = form.field('title') -%]
+<!--
+<a href="javascript:myPopup( 'child.html' )">Search Books</a><br />
+-->
+<a href="javascript:myPopup( '[% c.uri_for('/book/search') | html -%]' )">Search Books</a><br />
+
+<label class="label" for="[% f_title.name %]">[% f_title.label %]:</label>
+<input type="text" name="[% f_title.name %]" id="[% f_title.name %]" value="[% f_title.fif %]">
+</div>
+<div>
+[% f_book_fk = form.field('book_fk') -%]
+<input type="hidden" name="[% f_book_fk.name %]" id="[% f_book_fk.name %]" value="[% f_book_fk.fif %]">
+</div>
+<div>
+[% f_pages = form.field('pages') -%]
+<label class="label" for="[% f_pages.name %]">[% f_pages.label %]:</label>
+<input type="text" name="[% f_pages.name %]" id="[% f_pages.name %]" value="[% f_pages.fif %]">
+</div>
+<div>
+[% f_author = form.field('author_fk') -%]
+<label class="label" for="[% f_author.name %]">[% f_author.label %]</label>
+<select name="[% f_author.name %]">
+  [% FOR option IN f_author.options -%]
+    <option value="[% option.value -%]"
+    [% IF option.value == f_author.fif -%]
+     selected="selected"
+    [% END -%]>
+    [% option.label | html -%]</option>
+  [% END -%] 
+</select>
+</div>
+<div>
+[% f_tags = form.field('tags_str') -%]
+<label class="label" for="[% f_tags.name %]">[% f_tags.label %]:</label>
+<input type="text" name="[% f_tags.name %]" id="[% f_tags.name %]" value="[% f_tags.fif %]">
+</div>
+<div>
+[% f_submitter = form.field('posted_by') -%]
+<input type="hidden" name="[% f_submitter.name %]" id="[% f_submitter.name %]" value="[% f_submitter.fif %]">
+</div>
+<div>
+[% f_active = form.field('active') -%]
+<input type="hidden" name="[% f_active.name %]" id="[% f_active.name %]" value="[% f_active.fif %]">
+</div>
+<div>
+[% f_submit = form.field('submit') -%]
+<input type="submit" name="[% f_submit.name %]" id="[% f_submit.name %]" value="Save" class="wymupdate">
+</div>
+</fieldset>
+</form>
+
+<script language="javascript" type="text/javascript">
+<!--
+$(function () {
+
+    jQuery(".wymeditor").wymeditor();
+
+    var tags = [];
+    [% IF tags.count; FOREACH tag IN tags.all %]tags.push("[% tag.name %]");[% END; END %]
+
+    $('#tags_str').autocomplete(tags,
+	  {     autoFill: true,
+		selectFirst: true,
+		mustMatch: false,
+		multiple: true
+	  });
+});    
+//-->
+</script>
+
+<script type="text/javascript">
+function myPopup(searchURL) {
+ var wndSearch = window.open( searchURL, "SearchPopup", 
+"status = 1, height = 400, width = 600, resizable = 0" )
+  wndSearch.focus();
+}
+</script>
+

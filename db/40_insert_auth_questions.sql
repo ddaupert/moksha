@@ -1,0 +1,4 @@
+INSERT INTO auth_questions(id,question,active,created,updated) VALUES(1,'What city were you living in at age 14?',1,'2010-03-29 17:08:12','2010-03-29 17:08:12'); 
+INSERT INTO auth_questions(id,question,active,created,updated) VALUES(2,'What is the last name of your favorite teacher?',1,'2010-03-29 17:08:12','2010-03-29 17:08:12');
+INSERT INTO auth_questions(id,question,active,created,updated) VALUES(3,'What is your favorite band?',1,'2010-03-29 17:08:12','2010-03-29 17:08:12');
+INSERT INTO auth_questions(id,question,active,created,updated) VALUES(4,'What is your motto?',1,'2010-03-29 17:08:12','2010-03-29 17:08:12');

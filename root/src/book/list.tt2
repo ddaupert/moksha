@@ -1,0 +1,18 @@
+<h1>Book List</h1>
+<a href="[% c.action_uri('Book', 'add') %]">[ADD NEW BOOK]</a>
+<p>&nbsp;</p>
+[% WHILE (book = books.next) %]
+<div class="book">
+  <h2>[% book.title %]</h2>
+  <p class="content">
+    [% book.title %]
+  </p>
+  <p class="ops">
+    Posted [% book.created.strftime('%b %d, %Y') -%] 
+&nbsp;at [% book.created.strftime('%I:%M %P') -%]
+&nbsp;by [% book.b2_users.fname %] [% book.b2_users.lname -%]<br />
+    <a href="[% c.action_uri('Book', 'edit', [book.id]) %]">[edit]</a>
+    <a href="[% c.action_uri('Book', 'view', [book.id]) %]">[view]</a>
+  </p>
+</div>
+[% END %]

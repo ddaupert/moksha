@@ -1,0 +1,39 @@
+[% META title = 'Quote Functionality ' %]
+<p>&nbsp;</p>
+<h2>Purpose:</h2>
+<h3>To allow members to add quotations they find inspirational.<br /> 
+To allow users to search by tag, by keyword, by book, by author.
+</h3>
+<p>&nbsp;</p>
+<h2>Form Requirements:</h2>
+<h4>
+<ul>
+<li>Book Title</li>
+<li>Author</li>
+<li>Tags</li>
+</ul>
+</h4>
+<p>&nbsp;</p>
+<h2>Related Requirements:</h2>
+<h3>
+Quote Source: A related popup form allows the submitter to record the quote source.
+Initially, this will be a book. 
+</h3>
+<h4>
+<ul>
+<li>Title</li>
+<li>Sub Title</li>
+<li>Author</li>
+<li>Tags</li>
+<li>Page number</li>
+</ul>
+</h4>
+<p>&nbsp;</p>
+<h3>Question: How should the related quote source information be implemented?</h3>
+<h4>One idea is to have a "Title" textfield that will autopopulate book titles 
+matching user input. If no book title matches (the user's
+book has never been added), there is a link that will popup the add book form. 
+Once the book info is added and saved, the book title is recorded in the add
+quote form. Also, a hidden book_id is added to the add quote form to facilitate
+saving the book reference.
+</h4>

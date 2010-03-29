@@ -1,0 +1,23 @@
+<h1>Story List</h1>
+<a href="[% c.action_uri('Story', 'add') %]">[ADD NEW STORY]</a>
+<p>&nbsp;</p>
+[% WHILE (story = stories.next) %]
+<div class="story">
+ <hr>
+  <h2>[% story.title %]</h2>
+  <p class="content">
+
+  </p>
+  <p class="ops">
+    Posted [% story.created.strftime('%b %d, %Y') %] 
+at [% story.created.strftime('%I:%M %P') %]
+by [% story_obj.hm_story_authors.first.fname %] [% story_obj.m2m_authors.lname %]
+    <br />
+    <a href="[% c.action_uri('Story', 'edit', [story.id]) %]">[edit]</a>
+    <a href="[% c.action_uri('Story', 'view', [story.id]) %]">[view]</a>
+[% IF c.check_user_roles('is_superuser') OR c.check_user_roles('is_admin') %]
+    <a href="[% c.action_uri('Story', 'delete', [story.id]) %]">[delete]</a>
+[% END %]
+  </p>
+</div>
+[% END %]

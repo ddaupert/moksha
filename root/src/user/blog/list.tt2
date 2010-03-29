@@ -1,0 +1,20 @@
+<h1>Blog List</h1>
+<p>&nbsp;</p>
+<a href="[% c.uri_for("/user/$user_id/blog/add") %]">[ADD NEW BLOG]</a>
+[% WHILE (blog = blogs.next) %]
+[% SET blog_id = blog.id %]
+<div class="blog">
+  <p class="content">
+  <h3>[% blog.name %]</h3>
+  <h3>[% blog.description %]</h3>
+  </p>
+  <p class="ops">
+    <a href="[% c.uri_for("/user/$user_id/blog/$blog_id/edit") %]">[edit]</a>
+    <a href="[% c.uri_for("/user/$user_id/blog/$blog_id/view") %]">[view]</a>
+    <a href="[% c.uri_for("/user/$user_id/blog/$blog_id/entry/add") %]">[Add Entry]</a>
+    <a href="[% c.uri_for("/user/$user_id/blog/$blog_id/entry/list") %]">[View Entries]</a>
+  </p>
+</div>
+<hr>
+[% END %]
+

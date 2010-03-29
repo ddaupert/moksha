@@ -1,0 +1,11 @@
+[% META title = 'Clear Reality ' %]
+[% SET clear_id = clear_obj.id %]
+
+
+<h3>Situation: [% clear_obj.situation %]</h3>
+<h3>Charge: [% clear_obj.charge %]</h3>
+<h3>Intensity: [% clear_obj.intensity %]</h3>
+<h3>Belief: [% clear_obj.belief %]</h3>
+<h3>Done? [% clear_obj.is_done %]</h3>
+
+<a href="[% c.uri_for("/clear/add") %]">[MORE INQUIRY]</a>

@@ -1,0 +1,24 @@
+<h1>[% blog_obj.name%] Entries</h1>
+[% SET user_id = c.stash.user_obj.id %]
+[% SET blog_id = blog_obj.id %]
+<p>&nbsp;</p>
+<a href="[% c.uri_for("/user/$user_id/blog/$blog_id/entry/add") %]">[ADD NEW ENTRY]</a>
+[% WHILE (entry = entries.next) %]
+[% SET entry_id = entry_obj.id %]
+<div class="entry">
+  <p class="content">
+  <h3>[% entry.content %]</h3>
+    Posted [% entry.created.strftime('%b %d, %Y') %] 
+at [% entry.created.strftime('%I:%M %P') %]
+by [% blog_obj.b2_owner.fname %] [% blog_obj.b2_owner.lname %]
+  </p>
+  <p class="ops">
+    <a href="[% c.uri_for_action('/user/blog/entry/edit',[ user_id,blog_id,entry.id ]) %]">[edit]</a>
+    <a href="[% c.uri_for_action('/user/blog/entry/view',[ user_id,blog_id,entry.id ]) %]">[view]</a>
+[% IF c.check_user_roles('is_superuser') OR c.check_user_roles('is_admin') %]
+    <a href="[% c.uri_for_action('/user/blog/entry/delete',[ user_id,blog_id,entry.id ]) %]">[delete]</a>
+[% END %]
+  </p>
+</div>
+<hr>
+[% END %]

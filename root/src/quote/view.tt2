@@ -1,0 +1,8 @@
+[% META title = 'Quote ' %]
+[% SET quote_id = quote_obj.id %]
+
+<h4>Are you Inspired by this quote?
+<a href="[% c.uri_for("/quote/$quote_id/story/inspired") %]">[Write your story]</a>
+</h4>
+
+<h3>[% quote_obj.quote %]</h3>

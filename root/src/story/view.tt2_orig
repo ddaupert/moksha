@@ -1,0 +1,10 @@
+[% META title = 'Story ' %]
+[% SET story_id = item.id %]
+
+<h4>Inspired by this story?
+<a href="[% c.action_uri('Story', 'inspired', [story_id]) %]">[Write yours]</a>
+</h4>
+
+<h1>[% item.title %]</h1>
+
+[% item.content %]

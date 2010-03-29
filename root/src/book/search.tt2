@@ -1,0 +1,18 @@
+[% META title = 'Book Search' %]
+<script type="text/javascript">
+function updateParent(textField){
+opener.document.SearchForm.bookTitle.value = textField.value;
+self.close()
+}
+</script>
+<center>
+<h3>This is the book search screen</h3>
+</center>
+<form>
+<input name="bookTitle" type="text" onBlur="javascript:updateParent(this); return true" size="20" ><br />
+</form>
+
+<!--
+onClick="self.close()"
+<input type="button" value="Close" onClick="javascript:updateParent('photo.jpg')">
+-->

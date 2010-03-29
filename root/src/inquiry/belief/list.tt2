@@ -1,0 +1,27 @@
+[% META title = 'Belief List' %]
+[% SET inquiry_id = inquiry_obj.id %]
+<p>&nbsp;</p>
+<h2>Belief List</h2>
+<p>&nbsp;</p>
+<h3>
+Inquiry Title: [% inquiry_obj.title %] :: [% inquiry_obj.b2_users.fname %] [% inquiry_obj.b2_users.lname %]
+    <a href="[% c.uri_for("/inquiry/$inquiry_id/belief/add") %]">[Add Belief]</a>
+</h3>
+<p>&nbsp;</p>
+[% WHILE (belief = beliefs.next) %]
+[% SET belief_id = belief.id %]
+<div class="belief">
+  <p class="content">
+  <h3>    
+  [% belief.b2_types.type %] :: [% belief.belief %]
+  </h3>
+  </p>
+  <p class="ops">
+    <a href="[% c.uri_for("/inquiry/$inquiry_id/belief/$belief_id/edit") %]">[edit]</a>
+    <a href="[% c.uri_for("/inquiry/$inquiry_id/belief/$belief_id/view") %]">[view]</a>
+    <a href="[% c.uri_for("/inquiry/$inquiry_id/belief/$belief_id/delete") %]">[delete]</a>
+
+  </p>
+</div>
+<hr>
+[% END %]

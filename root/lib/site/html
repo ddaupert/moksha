@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ [% INCLUDE site/header.tt2 -%]
+ <body>
+<div id="page_container">
+  <div id="banner">
+  [% INCLUDE site/banner.tt2 -%]
+  </div>
+  <br />
+  <div id="left_menu">
+     [% INCLUDE site/menu.tt2 -%]
+  </div>
+  <div id="content">
+   [% IF c.user -%]
+    [% INCLUDE site/userline.tt2 -%]
+   [% END -%]
+    <span class="status_msg">[% status_msg || c.flash.status_msg -%]</span>
+    <span class="error_msg">[% error_msg || c.flash.error_msg -%]</span>
+  [% content -%]
+  </div>
+  <div id="right_sidebar">
+    [% INCLUDE site/sidebar.tt2 -%]
+  </div>
+  <div id="footer">
+  [% INCLUDE site/footer.tt2 -%]
+  </div>
+</div> <!-- end page_container -->
+ </body>
+</html>

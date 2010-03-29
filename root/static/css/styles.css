@@ -1,0 +1,20 @@
+
+/*.info_msg, .error_msg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 98%;
+
+    border-bottom: 2px solid #334455;
+    padding: 1%;
+
+    background-color: #8899AA;
+    font-size: 24px;
+    color: white;
+}*/
+
+
+.error_msg {
+    border-color: #554433;
+    background-color: #AA9988;
+}

@@ -1,0 +1,26 @@
+<h1>Author List</h1>
+<a href="[% c.action_uri('Author', 'add') %]">[ADD NEW AUTHOR]</a>
+<p>&nbsp;</p>
+[% WHILE (author = authors.next) %]
+<div class="author">
+  <p>
+[% IF author.known_as %]
+  [% author.known_as %] <br /> 
+<a href="[% c.action_uri('Author', 'edit', [author.id]) %]">[edit]</a>
+  </p>
+<hr>
+[% ELSE %]
+  <p>
+ [% IF author.prefix %] [% author.prefix %][% END %]
+ [% IF author.fname %]  [% author.fname %][% END %]
+ [% IF author.mname %] [% author.mname %][% END %]
+  [% author.lname %]
+  [% IF author.suffix %] [% author.suffix %][% END %]
+<br />
+    <a href="[% c.action_uri('Author', 'edit', [author.id]) %]">[edit]</a>
+  </p>
+<hr>
+[% END %]
+</div>
+[% END %]
+

@@ -1,0 +1,6 @@
+<h1>
+  [% IF blog_obj.id %]Editing "[% blog_obj.name %]"
+  [% ELSE %]Adding a new blog[% END %]
+</h1>
+
+[% form.render %]

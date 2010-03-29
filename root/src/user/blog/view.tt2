@@ -1,0 +1,14 @@
+[% META title = 'Blog ' %]
+[% SET blog_id = blog_obj.id %]
+
+<h3>[% blog_obj.name %]</h3>
+<h3>[% blog_obj.description %]</h3>
+<h3>[% blog_obj.b2_owner.fname %]</h3>
+
+<ul>
+<li>Name: [% blog_obj.name %]</li>
+<li>Description: [% blog_obj.description %]</li>
+<li>Owner: [% blog_obj.b2_owner.fname %] [% blog_obj.b2_owner.lname %]</li>
+</ul>
+
+<a href="[% c.uri_for("/user/$user_id/blog/$blog_id/entry/add") %]">[ADD NEW ENTRY]</a>

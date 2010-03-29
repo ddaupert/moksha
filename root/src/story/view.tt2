@@ -1,0 +1,22 @@
+[% META title = 'Story ' %]
+[% SET story_id = story_obj.id %]
+
+<h4>Inspired by this story?
+<a href="[% c.action_uri('Story', 'inspired', [story_id]) %]">[Write yours]</a>
+</h4>
+<h1>[% story_obj.title %]</h1>
+[% IF story_obj.inspire_story %]
+[% SET parent_id = story_obj.inspire_story %]
+Inspired by story: 
+<blockquote>
+<a href="[% c.uri_for("/story/$parent_id/view") %]">[% story_obj.b2_inspire_story.title | html %]</a>
+</blockquote>
+[% ELSIF story_obj.inspire_quote %]
+[% SET parent_id = story_obj.inspire_quote %]
+Inspired by quote: 
+<blockquote>
+<a href="[% c.uri_for("/quote/$parent_id/view") %]">[% story_obj.b2_inspire_quote.quote | html %]</a>
+</blockquote>
+[% END %]
+
+[% story_obj.content %]

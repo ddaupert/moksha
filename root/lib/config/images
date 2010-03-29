@@ -1,0 +1,26 @@
+[%  site.image = {
+    logo = {
+        large = {
+        src    = "$site.url.logo/tt2_180x60.gif"
+        alt    = "TT2 Logo"
+        width  = 180
+        height = 60
+        }
+        small = {
+        src    = "$site.url.logo/tt2_120x40.gif"
+        alt    = "TT2 Logo"
+        width  = 120
+        height = 40
+        }
+    }
+    name = {
+        src    = "$site.url.logo/ttdotorg.gif"
+        alt    = "template-toolkit.org"
+        width  = 180
+        height = 24
+    }
+    }
+ 
+    site.logo = site.image.logo.large
+ 
+-%]

@@ -1,0 +1,8 @@
+[% META title = 'Book ' %]
+[% SET book_id = book_obj.id %]
+
+
+<h3>[% book_obj.title %]</h3>
+<h3>[% book_obj.m2m_authors.first.lname %]</h3>
+<h3>[% book_obj.url %]</h3>
+<h3>[% book_obj.rating %]</h3>

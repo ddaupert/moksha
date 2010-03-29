@@ -1,0 +1,27 @@
+<h2>[% blog_obj.name %]</h2>
+<p>&nbsp;</p>
+<h3>
+  [% IF entry_obj.entry_id %]Editing "[% entry_obj.title %]"
+  [% ELSE %]Adding a new entry [% END %]
+</h3>
+
+[% form.render %]
+
+<script language="javascript" type="text/javascript">
+<!--
+$(function () {
+    $('#ts').datepicker({  dateFormat: 'yy-mm-dd', showOn: 'button', buttonText: 'Choose' });
+
+    var tags = [];
+    [% IF tags.count; FOREACH tag IN tags.all %]tags.push("[% tag.name %]");[% END; END %]
+
+    $('#tags_str').autocomplete(tags,
+	  {     autoFill: true,
+		selectFirst: true,
+		mustMatch: false,
+		multiple: true
+	  });
+});    
+//-->
+</script>
+

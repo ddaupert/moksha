@@ -1,0 +1,37 @@
+[% META title = 'Story Functionality ' %]
+<p>&nbsp;</p>
+<h2>Purpose:</h2>
+<h3>To allow members to write stories</h3> 
+</h3>
+<p>&nbsp;</p>
+<h2>Functional Requirements:</h2>
+<h4>
+<ul>
+<li>User can write and save a draft.</li>
+<li>User can edit the draft.</li>
+<li>Each edited draft is saved separately, keeping a running history</li>
+<li>Stories have statuses: private, shared, collaborate, published</li>
+<li>Drafts are initially private; only the user can view and edit.</li>
+<li>Shared drafts can be viewed by individuals the user designates.</li>
+<li>Collaborate drafts can be edited by individuals the user designates.</li>
+<li>Published stories can be viewed by all users of the site.</li>
+<li>Once Published, the story can no longer be edited.</li>
+</ul>
+</h4>
+<p>&nbsp;</p>
+<h2>Related Requirements:</h2>
+<h3>
+Inspired By...: Members may be inspired by other stories, quotes, or photos.
+Functions will be provided (button or link or something) that will link the member's new story to the inspiring object. 
+</h3>
+<p>&nbsp;</p>
+<h3>
+Stories inspired by a...
+</h3>
+<h4>
+<ul>
+<li>photo will display the photo in a callout box.</li>
+<li>quote will display the quote in a callout box.</li>
+<li>story will display the parent story title in a callout box.</li>
+</ul>
+</h4>
