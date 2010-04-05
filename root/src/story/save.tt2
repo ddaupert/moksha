@@ -35,6 +35,9 @@
 <input type="textarea" name="[% f_tags.name -%]" id="[% f_tags.name -%]" value="[% f_tags.fif -%]">
 </div>
 <div>
+[% form.field('status').render %]
+</div>
+<div>
 [% f_active = form.field('active') -%]
 <input type="hidden" name="[% f_active.name -%]" id="[% f_active.name -%]" value="[% f_active.fif -%]">
 </div>

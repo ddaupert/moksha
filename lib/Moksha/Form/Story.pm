@@ -15,6 +15,9 @@ has_field 'title'    => ( type => 'Text', required => 1 );
 has_field 'content'  => ( type => 'TextArea', required => 1 );
 has_field 'tags_str' => ( type => 'TextArea', required => 0, label => 'Tags' );
 has_field 'active'   => ( type => 'Hidden', required => 1, default => 1 );
+has_field 'status'   => ( type => 'Select', label => 'Status', required => 1, options =>
+    [ { value => 0, label => 'Private' }, { value => 1, label => 'Shared' }, { value => 2, label => 'Public' } ]
+);
 has_field 'user_id'  => ( type => 'Hidden', required => 1 );
 has_field 'inspire_story' => ( type => 'Hidden', required => 0 );
 has_field 'inspire_quote' => ( type => 'Hidden', required => 0 );
