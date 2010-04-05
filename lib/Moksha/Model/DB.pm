@@ -3,16 +3,8 @@ package Moksha::Model::DB;
 use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 
-__PACKAGE__->config(
-    schema_class => 'Moksha::Schema',
-    connect_info => [
-        'dbi:Pg:dbname=moksha',
-        'moksha',
-        'moksha',
-        { AutoCommit => 1 },
-        
-    ],
-);
+1;
+__END__
 
 =head1 NAME
 
@@ -35,5 +27,3 @@ This library is free software, you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
-
-1;
