@@ -19,4 +19,10 @@ Inspired by quote:
 </blockquote>
 [% END %]
 
+<p class="ops">
+    Posted [% story_obj.created.strftime('%b %d, %Y') %] 
+at [% story_obj.created.strftime('%I:%M %P') %]
+by [% story_obj.m2m_authors.fname %] [% story_obj.m2m_authors.lname %]
+</p>
+
 [% story_obj.content %]
