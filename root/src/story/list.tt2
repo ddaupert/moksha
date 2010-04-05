@@ -2,6 +2,7 @@
 <a href="[% c.action_uri('Story', 'add') %]">[ADD NEW STORY]</a>
 <p>&nbsp;</p>
 [% WHILE (story = stories.next) %]
+[% NEXT IF (NOT story.status AND story.m2m_authors.id != c.user.id); # Stories in Private status can be edited/viewed only by author. %]
 <div class="story">
  <hr>
   <h2>[% story.title %]</h2>
@@ -11,9 +12,9 @@
   <p class="ops">
     Posted [% story.created.strftime('%b %d, %Y') %] 
 at [% story.created.strftime('%I:%M %P') %]
-by [% story_obj.hm_story_authors.first.fname %] [% story_obj.m2m_authors.lname %]
+by [% story.m2m_authors.fname %] [% story.m2m_authors.lname %]
     <br />
-    [% UNLESS story.status == 2 %]
+    [% IF story.m2m_authors.id == c.user.id AND story.status != 2 %]
     <a href="[% c.action_uri('Story', 'edit', [story.id]) %]">[edit]</a>
     [% END %]
     <a href="[% c.action_uri('Story', 'view', [story.id]) %]">[view]</a>
