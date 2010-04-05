@@ -13,7 +13,9 @@
 at [% story.created.strftime('%I:%M %P') %]
 by [% story_obj.hm_story_authors.first.fname %] [% story_obj.m2m_authors.lname %]
     <br />
+    [% UNLESS story.status == 2 %]
     <a href="[% c.action_uri('Story', 'edit', [story.id]) %]">[edit]</a>
+    [% END %]
     <a href="[% c.action_uri('Story', 'view', [story.id]) %]">[view]</a>
 [% IF c.check_user_roles('is_superuser') OR c.check_user_roles('is_admin') %]
     <a href="[% c.action_uri('Story', 'delete', [story.id]) %]">[delete]</a>
