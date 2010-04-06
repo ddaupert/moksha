@@ -35,6 +35,8 @@
   <br />
     <a class="leftmenu" href="[% c.uri_for("/role/list") | html -%]">Roles</a>
   <br />
+    <a class="leftmenu" href="[% c.uri_for("/story_type/list") | html -%]">StoryType</a>
+  <br />
     <a class="leftmenu" href="[% c.uri_for("/tool/list") | html -%]">Tools</a>
   <br />
     <a class="leftmenu" href="[% c.uri_for("/tool/subqs/list") | html -%]">Sub Qs</a>
