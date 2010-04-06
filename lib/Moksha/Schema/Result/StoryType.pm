@@ -9,11 +9,11 @@ __PACKAGE__->table('story_type');
 
 __PACKAGE__->add_columns(
   "id",       { data_type => 'INTEGER', is_nullable => 0, is_auto_increment => 1 },
-  "type",     { data_type => 'VARCHAR', is_nullable => 0, size => 20 },
+  "label",    { data_type => 'VARCHAR', is_nullable => 0, size => 20 },
   "active",   { data_type => 'INTEGER', is_nullable => 0, size => 1, default => 1 },
 );
 
-__PACKAGE__->utf8_columns(qw/type/);
+__PACKAGE__->utf8_columns(qw/label/);
 __PACKAGE__->set_primary_key("id");
 
 1;

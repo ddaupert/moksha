@@ -18,6 +18,7 @@ has_field 'active'   => ( type => 'Hidden', required => 1, default => 1 );
 has_field 'status'   => ( type => 'Select', label => 'Status', required => 1, options =>
     [ { value => 0, label => 'Private' }, { value => 1, label => 'Shared' }, { value => 2, label => 'Public' } ]
 );
+has_field 'type'     => ( type => 'Select', label => 'Type', required => 1 );
 has_field 'user_id'  => ( type => 'Hidden', required => 1 );
 has_field 'inspire_story' => ( type => 'Hidden', required => 0 );
 has_field 'inspire_quote' => ( type => 'Hidden', required => 0 );
@@ -95,6 +96,17 @@ sub generate_symmary {
     my $len = length $content;
     $content = substr($content, 0, 200) . ($len > 200 ? '...' : '');
     return $content;
+}
+
+sub options_type { # for column 'type'
+    my $self = shift;
+    return unless $self->schema;
+    my $type_rs = $self->schema->resultset('StoryType')->search({active => 1});
+    my @selections;
+    while ( my $t = $type_rs->next ) {
+        push @selections, { value => $t->id, label => $t->label };
+    }
+    return @selections; 
 }
 
 no HTML::FormHandler::Moose;
