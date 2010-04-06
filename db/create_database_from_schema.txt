@@ -1,2 +1,2 @@
 
-perl -I./lib -MMoksha::Model::DB -e " Moksha::Model::DB->new->schema->deploy "
+perl -I./lib -MMoksha -e " Moksha->model('DB')->schema->deploy "
