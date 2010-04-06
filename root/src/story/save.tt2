@@ -22,6 +22,9 @@
 <label class="label" for="[% f_title.name -%]">[% f_title.label -%]:</label>
 <input type="text" name="[% f_title.name -%]" id="[% f_title.name -%]" value="[% f_title.fif -%]">
 </div>
+
+[% form.field('type').render %]
+
 <div>
 [% f_content = form.field('content') -%]
 <label class="label" for="[% f_content.name -%]">[% f_content.label -%]:</label>

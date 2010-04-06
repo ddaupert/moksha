@@ -1,0 +1,10 @@
+<h1>StoryType List</h1>
+<a href="[% c.action_uri('StoryType', 'add') %]">[ADD NEW STORY TYPE]</a>
+[% WHILE (storytype = storytypes.next) -%]
+<div class="role">
+  <p class="ops">
+   [% storytype.label %] ([% IF storytype.active %]Active[% ELSE %]Disabled[% END %]) <a href="[% c.action_uri('StoryType', 'edit', [storytype.id]) %]">[edit]</a>
+<a href="[% c.action_uri('StoryType', 'delete', [storytype.id]) %]">[delete]</a>
+  </p>
+</div>
+[% END %]

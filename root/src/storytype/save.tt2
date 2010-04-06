@@ -1,0 +1,8 @@
+<h1>
+  [% IF storytype_obj.id %]Editing "[% storytype_obj.label %]"
+  [% ELSE %]Adding a new role[% END %]
+</h1>
+
+[% form.render %]
+
+
