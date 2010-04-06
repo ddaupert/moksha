@@ -22,6 +22,7 @@ __PACKAGE__->add_columns(
   "active",        { data_type => 'INTEGER', is_nullable => 0, size => undef, 
                      default => 1 },
   "status",        { data_type => "INTEGER", is_nullable => 0, size => 1, default => 0 },
+  "type",          { data_type => "INTEGER", is_nullable => 0, size => undef, default => 0 },
   "title",         { data_type => "VARCHAR", is_nullable => 0, size => 100 },
   "summary",       { data_type => "TEXT", is_nullable => 1, size => undef },
   "content",       { data_type => "TEXT", is_nullable => 0, size => undef },
