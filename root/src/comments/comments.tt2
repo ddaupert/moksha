@@ -1,0 +1,20 @@
+<p>Post Comments</p>
+
+[% comment_form.render %]
+
+<div id='comments'>
+<hr />
+[% FOREACH comment IN comments %]
+<div id="c[% comment.id %]">
+<div>[% comment.title %]</div>
+<div>[% comment.content %]</div>
+</div>
+<hr />
+[% END %]
+</div>
+
+<script type="text/javascript">
+$(function() {
+    $('textarea[name="content"]').addClass('wymeditor').wymeditor();
+});
+</script>

@@ -60,8 +60,15 @@ sub list : Chained('base') Args(0) {
 
 sub view : Chained('id') Args(0) {
     my ($self, $c) = @_;
+    
+    my $story = $c->stash->{story_obj};
+    my $item = $c->model('DB::Comments')->new_result({
+        object_type => 'story', object_id => $story->id, owner_id => $c->user->id,
+        active => 1
+    });
+    $c->forward('/comments/save', [ $item ]);
 
-    $c->stash->{inspire_story} = $c->stash->{story_obj};
+    $c->stash->{inspire_story} = $story;
     $c->stash->{template} = 'story/view.tt2';
 }
 

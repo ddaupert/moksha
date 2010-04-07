@@ -4,6 +4,13 @@
 <h4>Inspired by this story?
 <a href="[% c.action_uri('Story', 'inspired', [story_id]) %]">[Write yours]</a>
 </h4>
+
+[% IF (NOT story.status AND story_obj.m2m_authors.id != c.user.id); # Stories in Private status can be edited/viewed only by author. %]
+
+Permission Denied
+
+[% ELSE %]
+
 <h1>[% story_obj.title %]</h1>
 [% IF story_obj.inspire_story %]
 [% SET parent_id = story_obj.inspire_story %]
@@ -26,3 +33,7 @@ by [% story_obj.m2m_authors.fname %] [% story_obj.m2m_authors.lname %]
 </p>
 
 [% story_obj.content %]
+
+[% INCLUDE comments/comments.tt2 %]
+
+[% END %]

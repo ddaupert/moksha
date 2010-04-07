@@ -23,6 +23,7 @@ requires 'Pod::Usage';
 requires 'FindBin';
 requires 'Path::Class';
 requires 'URI'; 
+requires 'Scope::Guard' => '0.12';
 requires 'DBIx::Class';
 requires 'DBIx::Class::Tree::AdjacencyList'; 
 requires 'Catalyst::Runtime' => '5.80013';
