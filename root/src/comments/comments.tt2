@@ -6,7 +6,7 @@
 <hr />
 [% FOREACH comment IN comments %]
 <div id="c[% comment.id %]">
-<div>[% comment.title %]</div>
+<div>[% comment.title %] By [% comment.b2_owner.fname %] [% comment.b2_owner.lname %] on [% comment.created.strftime('%b %d, %Y %I:%M %P') %]</div>
 <div>[% comment.content %]</div>
 </div>
 <hr />
@@ -16,5 +16,6 @@
 <script type="text/javascript">
 $(function() {
     $('textarea[name="content"]').addClass('wymeditor').wymeditor();
+    $('input[type="submit"]').addClass('wymupdate');
 });
 </script>
