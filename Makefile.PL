@@ -39,6 +39,7 @@ requires 'Catalyst::Action::Session::Store::FastMmap';
 requires 'Catalyst::Action::Unicode';
 requires 'parent';
 requires 'Config::General'; 
+requires 'HTML::TagCloud';
 catalyst;
 
 install_script glob('script/*.pl');
