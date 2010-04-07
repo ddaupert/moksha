@@ -11,7 +11,7 @@ has 'object_type' => ( isa => 'Str', is => 'rw' );
 has 'object_id'   => ( isa => 'Int', is => 'rw' );
 has 'owner_id'    => ( isa => 'Int', is => 'rw' );
 
-has_field 'title'    => ( type => 'Text', required => 1 );
+has_field 'title'    => ( type => 'Text', required => 1, maxlength => 100 );
 has_field 'content'  => ( type => 'TextArea', required => 1 );
 
 has_field 'submit'   => ( type => 'Submit' );

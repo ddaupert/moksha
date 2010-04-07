@@ -34,6 +34,13 @@ by [% story_obj.m2m_authors.fname %] [% story_obj.m2m_authors.lname %]
 
 [% story_obj.content %]
 
+<p id="tags">
+[% FOREACH tag IN story_obj.m2m_story_tags %]
+[% tag.name %][% UNLESS loop.last %], [% END %]
+[% END %]
+</p>
+<hr />
+
 [% INCLUDE comments/comments.tt2 %]
 
 [% END %]
