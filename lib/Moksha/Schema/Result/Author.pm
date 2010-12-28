@@ -5,7 +5,7 @@ use warnings;
 
 use base 'DBIx::Class';
 
-__PACKAGE__->load_components(qw/UTF8Columns Core/);
+__PACKAGE__->load_components(qw/Core/);
 __PACKAGE__->table("authors");
 __PACKAGE__->add_columns(
   "id",       { data_type => "INTEGER", is_nullable => 0, size => undef, is_auto_increment => 1 },
@@ -16,7 +16,7 @@ __PACKAGE__->add_columns(
   "suffix",   { data_type => "VARCHAR", is_nullable => 1, size => 10 },
   "known_as", { data_type => "VARCHAR", is_nullable => 0, size => 50 },
 );
-__PACKAGE__->utf8_columns(qw/prefix fname mname lname suffix known_as/);
+
 __PACKAGE__->set_primary_key("id");
 
 

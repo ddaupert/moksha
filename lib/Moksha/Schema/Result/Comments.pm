@@ -7,7 +7,6 @@ use base 'DBIx::Class';
 
 __PACKAGE__->load_components( "InflateColumn::DateTime", 
                               "TimeStamp", 
-                              "UTF8Columns",
                               "Core" 
                             );
 # Set the table name
@@ -25,8 +24,6 @@ __PACKAGE__->add_columns(
   "created",       { data_type => "datetime", set_on_create => 1 },
   "updated",       { data_type => 'datetime', set_on_create => 1, set_on_update => 1 },
 );
-
-__PACKAGE__->utf8_columns(qw/title content/);
 
 # Set the primary key for the table
 __PACKAGE__->set_primary_key(qw/id/);

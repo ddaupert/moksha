@@ -5,7 +5,8 @@ use warnings;
 
 use base 'DBIx::Class';
 
-__PACKAGE__->load_components(qw/InflateColumn::DateTime InflateColumn::FS UTF8Columns TimeStamp Core/);
+#__PACKAGE__->load_components(qw/InflateColumn::DateTime InflateColumn::FS TimeStamp Core/);
+__PACKAGE__->load_components(qw/InflateColumn::DateTime TimeStamp Core/);
 __PACKAGE__->table("photos");
 __PACKAGE__->add_columns(
   "id",       { data_type => "INTEGER", is_nullable => 0, is_auto_increment => 1 },
@@ -27,7 +28,6 @@ __PACKAGE__->add_columns(
 #      }
 # );
 
-__PACKAGE__->utf8_columns(qw/name caption/);
 __PACKAGE__->set_primary_key("id");
 
 __PACKAGE__->has_many(

@@ -5,7 +5,7 @@ use warnings;
 
 use base qw/DBIx::Class/;
 
-__PACKAGE__->load_components(qw/TimeStamp InflateColumn::DateTime UTF8Columns Core/);
+__PACKAGE__->load_components(qw/TimeStamp InflateColumn::DateTime Core/);
 __PACKAGE__->table('articles');
 
 __PACKAGE__->add_columns(
@@ -16,8 +16,6 @@ __PACKAGE__->add_columns(
  "summary",    { data_type => 'text',     is_nullable => 1 },
  "rank",       { data_type => 'decimal',  is_nullable => 1, size => [3,2]   },
 );
-
-__PACKAGE__->utf8_columns(qw/title content summary/);
 
 __PACKAGE__->set_primary_key('article_id');
 

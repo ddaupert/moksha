@@ -5,14 +5,13 @@ use warnings;
 
 use base 'DBIx::Class';
 
-__PACKAGE__->load_components(qw/InflateColumn::DateTime UTF8Columns TimeStamp Core/);
+__PACKAGE__->load_components(qw/InflateColumn::DateTime TimeStamp Core/);
 __PACKAGE__->table("inq_types");
 __PACKAGE__->add_columns(
   "id",       { data_type => 'INTEGER', is_nullable => 0, is_auto_increment => 1 },
   "type",     { data_type => 'VARCHAR', is_nullable => 0, size => 20 },
 );
 
-__PACKAGE__->utf8_columns(qw/type/);
 __PACKAGE__->set_primary_key("id");
 
 #

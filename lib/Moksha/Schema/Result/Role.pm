@@ -5,14 +5,13 @@ use warnings;
 
 use base 'DBIx::Class';
 
-__PACKAGE__->load_components(qw/InflateColumn::DateTime UTF8Columns Core/);
+__PACKAGE__->load_components(qw/InflateColumn::DateTime Core/);
 __PACKAGE__->table("roles");
 __PACKAGE__->add_columns(
   "id",   { data_type => "INTEGER", is_nullable => 0, is_auto_increment => 1 },
   "role", { data_type => "VARCHAR", is_nullable => 0, size => 50 },
 );
 
-__PACKAGE__->utf8_columns(qw/role/);
 __PACKAGE__->set_primary_key("id");
 
 __PACKAGE__->has_many(

@@ -5,7 +5,7 @@ use warnings;
 
 use base qw/DBIx::Class/;
 
-__PACKAGE__->load_components(qw/UTF8Columns Core/);
+__PACKAGE__->load_components(qw/Core/);
 __PACKAGE__->table('tags');
 
 __PACKAGE__->add_columns(
@@ -16,8 +16,6 @@ __PACKAGE__->add_columns(
  "quote_id",      { data_type => "INTEGER", is_nullable => 1, size => undef },  
  "photo_id",      { data_type => "INTEGER", is_nullable => 1, size => undef },
 );
-
-__PACKAGE__->utf8_columns(qw/name/);
 
 __PACKAGE__->set_primary_key('tag_id');
 
