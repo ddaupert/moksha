@@ -1,8 +1,11 @@
 
 Once Moksha is unpacked, you need to create and populate a database.
 
+$MOKSHA_HOME represents the toplevel directory; default 
+is 'moksha.' 
+
 Currently, database settings point to Postgresql in 
-moksha/moksha.conf. Modify database connection settings 
+$MOKSHA_HOME/moksha.conf. Modify database connection settings 
 based on your chosen server, etc.
 
 If using Postgresql, Mysql you will need to follow that db server's
@@ -18,23 +21,23 @@ databasename to your needs):
 If using Sqlite, create your database file:
 sqlite3 moksha.db
 
-Then configure for it in moksha/moksha.conf
+Then configure for it in $MOKSHA_HOME/moksha.conf
 
 You can create the database tables by executing the 
-command-line in the file moksha/db/create_database_from_schema.txt. 
+command-line in the file $MOKSHA_HOME/db/create_database_from_schema.txt. 
 You need to be in the moksha directory when you run the code.
 
 Once your database and tables are created, populate the tables
 by executing the sql statements, in order, in the sql files
-in moksha/db directory using the following command and flags
-(modify to suit):
+in $MOKSHA_HOME/db directory using the following command and flags;
+modify to suit your settings. 
 
-psql -U moksha -d moksha -f /path/to/db/10_insert_users.sql
-psql -U moksha -d moksha -f /path/to/db/20_insert_roles.sql
-psql -U moksha -d moksha -f /path/to/db/30_insert_user_roles.sql
-psql -U moksha -d moksha -f /path/to/db/40_insert_auth_questions.sql
-psql -U moksha -d moksha -f /path/to/db/50_insert_inq_types.sql
-psql -U moksha -d moksha -f /path/to/db/60_insert_inq_belief_sub_qs.sql
+psql -U moksha -d moksha -f $MOKSHA_HOME/db/10_insert_users.sql
+psql -U moksha -d moksha -f $MOKSHA_HOME/db/20_insert_roles.sql
+psql -U moksha -d moksha -f $MOKSHA_HOME/db/30_insert_user_roles.sql
+psql -U moksha -d moksha -f $MOKSHA_HOME/db/40_insert_auth_questions.sql
+psql -U moksha -d moksha -f $MOKSHA_HOME/db/50_insert_inq_types.sql
+psql -U moksha -d moksha -f $MOKSHA_HOME/db/60_insert_inq_belief_sub_qs.sql
 
 
 Run script/moksha_server.pl to test the application.
