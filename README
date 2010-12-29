@@ -1,10 +1,9 @@
 
 Once Moksha is unpacked, you need to create and populate a database.
 
-Currently, database settings point to Postgresql 
-in Moksha/lib/Moksha/Model/DB.pm
-Modify database server, user, database, password, based on your
-chosen server, etc.
+Currently, database settings point to Postgresql in 
+moksha/moksha.conf. Modify database connection settings 
+based on your chosen server, etc.
 
 If using Postgresql, Mysql you will need to follow that db server's
 procedures to create your database, user, password. For Postgresql,
@@ -19,15 +18,15 @@ databasename to your needs):
 If using Sqlite, create your database file:
 sqlite3 moksha.db
 
-Then configure for it in Moksha/lib/Moksha/Model/DB.pm
+Then configure for it in moksha/moksha.conf
 
-You can create the database tables by executing the command-line in the 
-file Moksha/db/create_database_from_schema.txt. You need to
-be in the Moksha directory when you run the code.
+You can create the database tables by executing the 
+command-line in the file moksha/db/create_database_from_schema.txt. 
+You need to be in the moksha directory when you run the code.
 
 Once your database and tables are created, populate the tables
-by executing the sql statements, in order, of the sql files
-in Moksha/db directory using the following command and flags
+by executing the sql statements, in order, in the sql files
+in moksha/db directory using the following command and flags
 (modify to suit):
 
 psql -U moksha -d moksha -f /path/to/db/10_insert_users.sql
