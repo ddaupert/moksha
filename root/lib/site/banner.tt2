@@ -5,11 +5,10 @@
 <div id="nav">
   <ul>
     <li><a href="/" id="homeLink">Home</a></li>
-    <li><a href="/features/index.html" id="featureLink">Features</a></li>
-    <li><a href="/experts/index.html" id="expertLink">Experts</a></li>
-    <li><a href="/quiz/index.html" id="quizLink">Quiz</a></li>
-    <li><a href="/projects/index.html" id="projectLink">Projects</a></li>
-    <li><a href="/horoscopes/index.html" id="horoscopeLink">Horoscopes</a></li>
+    <li><a href="[% c.uri_for("/story/list") | html -%]" id="storyLink">Stories</a></li>
+    <li><a href="[% c.uri_for("/quote/list") | html -%]" id="quoteLink">Quotes</a></li>
+    <li><a href="[% c.uri_for("/book/list") | html -%]" id="bookLink">Books</a></li>
+    <li><a href="[% c.uri_for("/author/list") | html -%]" id="authorLink">Authors</a></li>
    </ul>
 </div>
 </div>

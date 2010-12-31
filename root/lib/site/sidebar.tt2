@@ -1,7 +1,8 @@
-[% IF c.user %]
+[% IF c.user -%]
+[% SET user_id = c.user.id -%]
 <h3>Welcome [% c.user.fname %]</h3>
-[% SET users_id = c.stash.user_id %]
-<p><a href="[% c.uri_for("/users/$users_id/profile") %]">My Profile</a></p>
+[% SET user_id = c.user.id -%]
+<p><a href="[% c.uri_for("/users/$user_id/profile") %]">My Profile</a></p>
 <p><a href="[% c.uri_for('/logout') %]">Logout</a></p>
 [% ELSE %]
 <p><a href="[% c.uri_for('/login') %]">Login</a></p>
