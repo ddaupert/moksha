@@ -35,6 +35,7 @@ after 'setup_form' => sub {
   my $item = $self->item;
 
   $self->field('posted_by')->value( $self->posted_by );
+  $self->field('active')->value( '1' );
 
   $self->field('tags_str')->value(
     join ', ', 

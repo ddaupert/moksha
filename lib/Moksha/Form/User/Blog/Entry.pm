@@ -25,6 +25,7 @@ after 'setup_form'   => sub {
 
   $self->field('blog_id')->value( $self->blog_id );
   $self->field('user_id')->value( $self->user_id );
+  $self->field('active')->value( '1' );
  
   $self->field('tags_str')->value(
     join ', ', 

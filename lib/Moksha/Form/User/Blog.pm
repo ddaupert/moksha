@@ -17,10 +17,11 @@ has_field 'active'      => ( type => 'Hidden', required => 1, default => 1 );
 has_field 'submit'      => ( type => 'Submit' );
 
 after 'setup_form' => sub {
-    my $self = shift;
-    my $item = $self->item;
+  my $self = shift;
+  my $item = $self->item;
 
   $self->field('owner_id')->value( $self->owner_id );
+  $self->field('active')->value( '1' );
 };
 
 no HTML::FormHandler::Moose;

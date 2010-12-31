@@ -29,17 +29,12 @@ has_field 'active'   => ( type => 'Hidden', required => 1, default => 1 );
 
 has_field 'submit'   => ( type => 'Submit' );
 
+after 'setup_form' => sub {
+  my $self = shift;
+  my $item = $self->item;
 
-
-# after 'setup_form' => sub {
-#     my $self = shift;
-#     my $item = $self->item;
-# 
-#     $self->field('tags_str')->value(
-# 	join ', ', 
-#         $item->m2m_tags->search({}, { order_by => 'name' })->get_column('name')->all
-#     );
-# };
+  $self->field('active')->value( '1' );
+};
 
 # around 'update_model' => sub {
 #     my $orig = shift;

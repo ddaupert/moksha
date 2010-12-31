@@ -36,23 +36,24 @@ sub options_m2m_authors {
 }
 
 after 'setup_form' => sub {
-    my $self = shift;
-    my $item = $self->item;
+  my $self = shift;
+  my $item = $self->item;
 
-    $self->field('posted_by')->value( $self->user_id );
+  $self->field('posted_by')->value( $self->user_id );
+  $self->field('active')->value( '1' );
 
-    $self->field('tags_str')->value(
+  $self->field('tags_str')->value(
 	join ', ', 
         $item->m2m_tags->search({}, { order_by => 'name' })->get_column('name')->all
-    );
+  );
 };
 
 around 'update_model' => sub {
-    my $orig = shift;
-    my $self = shift;
-    my $item = $self->item;
+  my $orig = shift;
+  my $self = shift;
+  my $item = $self->item;
     
-    $self->schema->txn_do(sub {	
+  $self->schema->txn_do(sub {	
 	$orig->($self, @_);
 
 	my @tags = split /\s*,\s*/, $self->field('tags_str')->value;

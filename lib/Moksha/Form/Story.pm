@@ -31,6 +31,7 @@ after 'setup_form'   => sub {
   my $story_obj = $self->item;
 
   $self->field('user_id')->value( $self->user_id );
+  $self->field('active')->value( '1' );
   
   if ( $self->inspire_story  ) {
     $self->field('inspire_story')->value( $self->inspire_story );
@@ -66,8 +67,8 @@ around 'update_model' => sub {
   my $content = filter_content($story_obj->content);
   $story_obj->update({ content => $content }) if $content;
 
-	my $summary = generate_symmary($story_obj->content);
-	$story_obj->update({ summary => $summary }) if $summary;
+  my $summary = generate_symmary($story_obj->content);
+  $story_obj->update({ summary => $summary }) if $summary;
 
   $story_obj->hm_story_authors->find_or_create(
                          {  story_fk  => $story_obj->id,
