@@ -24,7 +24,8 @@ sqlite3 moksha.db
 Then configure for it in $MOKSHA_HOME/moksha.conf
 
 You can create the database tables by executing the 
-command-line in the file $MOKSHA_HOME/db/create_database_from_schema.txt. 
+command-line in the file: 
+$MOKSHA_HOME/db/create_database_from_schema.txt. 
 You need to be in the moksha directory when you run the code.
 
 Once your database and tables are created, populate the tables
