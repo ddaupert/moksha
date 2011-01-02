@@ -2,34 +2,28 @@
 [% SET user_id = c.user.id -%]
 [% END -%]
 <div>
-<!--
-
--->
-    <a class="leftmenu" href="[% c.uri_for("/quote/list") | html -%]">Quotes</a>
+    <a class="leftmenu" href="[% c.uri_for("/author/list") | html -%]">Authors</a>
   <br />
     <a class="leftmenu" href="[% c.uri_for("/book/list") | html -%]">Books</a>
   <br />
-    <a class="leftmenu" href="[% c.uri_for("/author/list") | html -%]">Authors</a>
+    <a class="leftmenu" href="[% c.uri_for("/quote/list") | html -%]">Quotes</a>
   <br />
     <a class="leftmenu" href="[% c.uri_for("/story/list") | html -%]">Stories</a>
   <br />
+[% IF c.check_user_roles('is_member') -%]
+<pre>
+-- Member
+</pre>
     <a class="leftmenu" href="[% c.uri_for("/user/$user_id/blog/list") | html -%]">User Blogs</a>
   <br />
     <a class="leftmenu" href="[% c.uri_for("/user/$user_id/authqna/view") | html -%]">User Q&A View</a>
   <br />
-    <a class="leftmenu" href="[% c.uri_for("/inquiry/list") | html -%]">Inquiry</a>
-  <br />
-    <a class="leftmenu" href="[% c.uri_for("/clear/list") | html -%]">Clear</a>
-  <br />
-[% IF c.check_user_roles('is_superuser') %]
+[% END -%]
+[% IF c.check_user_roles('is_superuser') -%]
 <pre>
---------
+-- Superuser
 </pre>
     <a class="leftmenu" href="[% c.uri_for("/article/list") | html -%]">Site Blog</a>
-  <br />
-    <a class="leftmenu" href="[% c.uri_for("/user/list") | html -%]">Users</a>
-  <br />
-    <a class="leftmenu" href="[% c.uri_for("/address/list") | html -%]">Addresses</a>
   <br />
     <a class="leftmenu" href="[% c.uri_for("/authquestion/list") | html -%]">Auth Questions</a>
   <br />
@@ -37,9 +31,9 @@
   <br />
     <a class="leftmenu" href="[% c.uri_for("/story_type/list") | html -%]">StoryType</a>
   <br />
-    <a class="leftmenu" href="[% c.uri_for("/tool/list") | html -%]">Tools</a>
+    <a class="leftmenu" href="[% c.uri_for("/user/list") | html -%]">Users</a>
   <br />
-    <a class="leftmenu" href="[% c.uri_for("/tool/subqs/list") | html -%]">Sub Qs</a>
+    <a class="leftmenu" href="[% c.uri_for("/address/list") | html -%]">Addresses</a>
   <br />
-[% END %]
+[% END -%]
 </div>
