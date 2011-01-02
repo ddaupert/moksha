@@ -12,9 +12,6 @@ __PACKAGE__->add_columns(
 "id",        { data_type => 'INTEGER', is_nullable => 0, size => undef, is_auto_increment => 1 },
 "quote",     { data_type => 'TEXT',    is_nullable => 0, size => undef },
 "posted_by", { data_type => 'INTEGER', is_nullable => 1, size => undef },
-"author_fk", { data_type => 'INTEGER', is_nullable => 1, size => undef },
-"book_fk",   { data_type => 'INTEGER', is_nullable => 1, size => undef },
-"pages",     { data_type => 'VARCHAR', is_nullable => 0, size => 20 },
 "active",    { data_type => 'INTEGER', is_nullable => 0, size => undef, default_value => '1'},
 # Enable automatic date handling
 "created",   { data_type => 'datetime', set_on_create => 1 },
@@ -46,7 +43,6 @@ __PACKAGE__->many_to_many(m2m_quote_tags => 'hm_quote_tags', 'b2_tag');
 #     2) Name of the model class referenced by this relationship
 #     3) Column name in *this* table
 __PACKAGE__->belongs_to('b2_users' => 'Moksha::Schema::Result::User', 'posted_by');
-__PACKAGE__->belongs_to('b2_authors' => 'Moksha::Schema::Result::Author', 'author_fk');
 
 
 =head1 NAME
