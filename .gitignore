@@ -1,2 +1,4 @@
 # ignore dir where we keep notes
 docs/
+*.skip
+*.db
