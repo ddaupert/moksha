@@ -1,7 +1,5 @@
 package Moksha::Form::Address;
 
-use strict;
-use warnings;
 use HTML::FormHandler::Moose;
 
 extends 'HTML::FormHandler::Model::DBIC';
@@ -24,40 +22,7 @@ has '+dependency' => ( default => sub {
     }
 );
 
-
-# sub validate_password {
-#   my ( $self, $field ) = @_;
-#   $field->add_error("passwords do not match")
-#       if ( $field->value ne $self->value->password2 );
-# }
-
-# after 'setup_form' => sub {
-#     my $self = shift;
-#     my $item = $self->item;
-# 
-#     $self->field('tags_str')->value(
-# 	join ', ', 
-#         $item->m2m_tags->search({}, { order_by => 'name' })->get_column('name')->all
-#     );
-# };
-
-# around 'update_model' => sub {
-#     my $orig = shift;
-#     my $self = shift;
-#     my $item = $self->item;
-#     
-#     $self->schema->txn_do(sub {	
-# 	$orig->($self, @_);
-# 
-# 	my @tags = split /\s*,\s*/, $self->field('tags_str')->value;
-# 
-# 	$item->hm_quote_tags->delete;
-#   $item->hm_quote_tags->create({ b2_tag => { name => $_ } })
-# 	    foreach (@tags);
-#     });
-# };
-
-
 no HTML::FormHandler::Moose;
+__PACKAGE__->meta->make_immutable;
 
 1;
