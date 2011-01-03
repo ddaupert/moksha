@@ -12,8 +12,6 @@ has 'posted_by'        => ( isa => 'Int', is => 'rw' );
 # has 'book_fk'          => ( isa => 'Int', is => 'rw' );
 
 has_field 'quote'      => ( type => 'TextArea', required => 1 );
-has_field 'title'      => ( type => 'Text', label => 'Book Title', required => 0 );
-has_field 'pages'      => ( type => 'Text', label => 'Page(s)', required => 0 );
 has_field 'tags_str'   => ( type => 'Text', required => 0, label => 'Tags' );
 has_field 'posted_by'  => ( type => 'Hidden', required => 1 );
 has_field 'active'     => ( type => 'Hidden', required => 1, default => 1 );

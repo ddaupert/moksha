@@ -11,37 +11,22 @@
 [% f_quote.fif -%]
 </textarea>
 </div>
+<!--
 <div>
 [% f_title = form.field('title') -%]
-<!--
+
 <a href="javascript:myPopup( 'child.html' )">Search Books</a><br />
--->
+
 <a href="javascript:myPopup( '[% c.uri_for('/book/search') | html -%]' )">Search Books</a><br />
 
 <label class="label" for="[% f_title.name %]">[% f_title.label %]:</label>
 <input type="text" name="[% f_title.name %]" id="[% f_title.name %]" value="[% f_title.fif %]">
 </div>
+-->
 <div>
-[% f_book_fk = form.field('book_fk') -%]
-<input type="hidden" name="[% f_book_fk.name %]" id="[% f_book_fk.name %]" value="[% f_book_fk.fif %]">
-</div>
-<div>
-[% f_pages = form.field('pages') -%]
-<label class="label" for="[% f_pages.name %]">[% f_pages.label %]:</label>
-<input type="text" name="[% f_pages.name %]" id="[% f_pages.name %]" value="[% f_pages.fif %]">
-</div>
-<div>
-[% f_author = form.field('author_fk') -%]
+[% f_author = form.field('author') -%]
 <label class="label" for="[% f_author.name %]">[% f_author.label %]</label>
-<select name="[% f_author.name %]">
-  [% FOR option IN f_author.options -%]
-    <option value="[% option.value -%]"
-    [% IF option.value == f_author.fif -%]
-     selected="selected"
-    [% END -%]>
-    [% option.label | html -%]</option>
-  [% END -%] 
-</select>
+<input type="text" name="[% f_author.name %]" id="[% f_author.name %]" value="[% f_author.fif %]">
 </div>
 <div>
 [% f_tags = form.field('tags_str') -%]
