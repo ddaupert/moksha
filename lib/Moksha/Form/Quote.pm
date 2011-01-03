@@ -12,6 +12,7 @@ has 'posted_by'        => ( isa => 'Int', is => 'rw' );
 # has 'book_fk'          => ( isa => 'Int', is => 'rw' );
 
 has_field 'quote'      => ( type => 'TextArea', required => 1 );
+has_field 'author'     => ( type => 'Text', required => 0, label => 'Author' );
 has_field 'tags_str'   => ( type => 'Text', required => 0, label => 'Tags' );
 has_field 'posted_by'  => ( type => 'Hidden', required => 1 );
 has_field 'active'     => ( type => 'Hidden', required => 1, default => 1 );
@@ -40,21 +41,23 @@ after 'setup_form' => sub {
   );
 };
 
-around 'update_model' => sub {
+around 'update_model' => 
+  sub {
     my $orig = shift;
     my $self = shift;
     my $item = $self->item;
     
-    $self->schema->txn_do(sub {	
-	$orig->($self, @_);
+    $self->schema->txn_do(
+      sub {
+        $orig->($self, @_);
+        my @tags = split /\s*,\s*/, $self->field('tags_str')->value;
 
-	my @tags = split /\s*,\s*/, $self->field('tags_str')->value;
-
-	$item->hm_quote_tags->delete;
-  $item->hm_quote_tags->create({ b2_tag => { name => $_ } })
-	    foreach (@tags);
-    });
-};
+        $item->hm_quote_tags->delete;
+        $item->hm_quote_tags->create(
+             { b2_tag => { name => $_ } })
+          foreach (@tags);
+      });
+  };
 
 
 no HTML::FormHandler::Moose;
