@@ -1,0 +1,53 @@
+<h1>
+  [% IF item.user_id %]Editing "[% item.fname %] [% item.lname %] "
+  [% ELSE %]New Member Registration[% END %]
+</h1>
+
+<form id="form_user" method="post" >
+<fieldset class="main_fieldset">
+<div>
+[% f1 = form.field('fname') %]
+<label class="label" for="[% f1.name %]">[% f1.label %]:</label>
+<input type="text" name="[% f1.name %]" id="[% f1.name %]" value="[% f1.fif %]">
+</div>
+<div>
+[% f2 = form.field('mname') %]
+<label class="label" for="[% f2.name %]">[% f2.label %]:</label>
+<input type="text" name="[% f2.name %]" id="[% f2.name %]" value="[% f2.fif %]">
+</div>
+<div>
+[% f3 = form.field('lname') %]
+<label class="label" for="[% f3.name %]">[% f3.label %]:</label>
+<input type="text" name="[% f3.name %]" id="[% f3.name %]" value="[% f3.fif %]">
+</div>
+<div>
+[% f4 = form.field('username') %]
+<label class="label" for="[% f4.name %]">[% f4.label %]:</label>
+<input type="text" name="[% f4.name %]" id="[% f4.name %]" value="[% f4.fif %]">
+</div>
+<div>
+[% f5 = form.field('email') %]
+<label class="label" for="[% f5.name %]">[% f5.label %]:</label>
+<input type="text" name="[% f5.name %]" id="[% f5.name %]" value="[% f5.fif %]">
+</div>
+<div>
+[% f6 = form.field('password') %]
+<label class="label" for="[% f6.name %]">[% f6.label %]:</label>
+<input type="password" name="[% f6.name %]" id="[% f6.name %]" value="[% f6.fif %]">
+</div>
+<div>
+[% f7 = form.field('password2') %]
+<label class="label" for="[% f7.name %]">[% f7.label %]:</label>
+<input type="password" name="[% f7.name %]" id="[% f7.name %]" value="[% f7.fif %]">
+</div>
+<div>
+[% f8 = form.field('active') %]
+<input type="hidden" name="[% f8.name %]" id="[% f8.name %]" value="[% f8.fif %]">
+</div>
+<div>
+[% f9 = form.field('submit') %]
+<input type="submit" name="[% f9.name %]" id="[% f9.name %]" value="Save">
+</div>
+</fieldset>
+</form>
+

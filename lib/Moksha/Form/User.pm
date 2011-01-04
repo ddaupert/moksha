@@ -48,14 +48,6 @@ has_field 'active'    => ( type => 'Hidden',
                            default => 1 );
 
 
-after 'setup_form' => sub {
-  my $self = shift;
-  my $item = $self->item;
-
-  $self->field('active')->value( '1' );
-};
-
-
 no HTML::FormHandler::Moose;
 __PACKAGE__->meta->make_immutable;
 
