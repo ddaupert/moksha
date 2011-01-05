@@ -34,7 +34,7 @@ Place common logic to start chained dispatch here
 
 =cut
 
-# url /user/*/blog/
+# url /user/registration
 sub base :Chained("/user/base") :PathPart("registration") :CaptureArgs(0) {
     my ($self, $c) = @_;
 
@@ -45,6 +45,7 @@ sub base :Chained("/user/base") :PathPart("registration") :CaptureArgs(0) {
 ################
 ################
 
+# url /user/registration/register
 sub register : Chained('base') Args(0) {
     my ($self, $c) = @_;
     $c->stash->{user_obj} = $c->stash->{user_rs}->new_result({});
@@ -68,13 +69,26 @@ sub save : Private {
     return unless $form->process( params => $c->req->params  );
 
     $c->flash->{info_msg} = "Registration has begun";
-    $c->redirect_to_action('Registration', 'inform_next_step');
+    $c->redirect_to_action('Registration', 'expect_email');
 }
 
 ################
 ################
 
-sub inform_next_step :Path :Args(0) {
+# url /user/registration/expect_email
+sub expect_email :Path :Args(0) {
+    my ( $self, $c ) = @_;
+
+    $c->stash->{template} = 'user/registration/inform.tt2';
+
+}
+
+
+################
+################
+
+# url /user/registration/verify
+sub verify :Path :Args(0) {
     my ( $self, $c ) = @_;
 
     $c->stash->{template} = 'user/registration/inform.tt2';

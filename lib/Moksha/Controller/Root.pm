@@ -85,6 +85,13 @@ sub auto : Private {
       return 1;
     }
 
+    # Allow unauthed users to reach the registration area
+    if ( $c->req->path =~ m/registration/ ) {
+      $c->log->debug('*** Root::auto MATCH registration area ');
+      return 1;
+    }
+
+
     # Allow unauthenticated users to reach the login page.  This
     # allows unauthenticated users to reach any action in the Login
     # controller.  To lock it down to a single action, we could use:

@@ -6,6 +6,6 @@
 <p><a href="[% c.uri_for('/logout') %]">Logout</a></p>
 [% ELSE %]
 <p><a href="[% c.uri_for('/login') %]">Login</a></p>
-<p><a href="[% c.uri_for('/users/pwforgot') %]">Forgot Password?</a></p>
-<p><a href="[% c.uri_for('/registration/register') %]">Register</a></p>
+<p><a href="[% c.uri_for('/user/pwforgot') %]">Forgot Password?</a></p>
+<p><a href="[% c.uri_for('/user/registration/register') %]">Register</a></p>
 [% END %]
