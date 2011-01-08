@@ -68,6 +68,30 @@ __PACKAGE__->many_to_many(m2m_qnas2 => 'hm_auth_qnas', 'b2_quest2');
 #
 #__PACKAGE__->resultset_class('Moksha::Schema::ResultSet::User');
 
+################
+################
+
+=head 2 make_authcode
+
+Generate random string for registering users.
+Authcode will be used for validating registrant.
+
+=cut
+
+sub make_authcode {
+  my ($self) = @_;
+  
+  #my @chars = ( "A" .. "Z", "a" .. "z", 0 .. 9 );
+  my @chars = ( 0 .. 9 );
+  my $authcode = join( "", @chars[ map { rand @chars } 1 .. 10 ]);
+  
+  return( $authcode );
+
+}
+
+################
+################
+
 =head 2 has_role
 
 Check if a user has the specified role

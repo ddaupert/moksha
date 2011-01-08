@@ -1,17 +1,16 @@
 
-Once Moksha is unpacked, you need to create and populate a database.
-
-$MOKSHA_HOME represents the toplevel directory; default 
+NOTE: $MOKSHA_HOME represents the toplevel directory; default 
 is 'moksha.' 
 
-Currently, database settings point to Postgresql in 
-$MOKSHA_HOME/moksha.conf. Modify database connection settings 
-based on your chosen server, etc.
+Once Moksha is unpacked, you need to create and populate a database.
 
-If using Postgresql, Mysql you will need to follow that db server's
-procedures to create your database, user, password. For Postgresql,
-you can use these instructions (modify username, password, 
-databasename to your needs):
+Database settings are configured in $MOKSHA_HOME/moksha.conf. 
+Modify database connection settings based on your chosen server, 
+etc.
+
+If using Postgresql, you can use these instructions to create
+your database, etc. (modify username, password, databasename 
+to your needs):
 
 1. sudo su postgres
 2. psql
@@ -19,19 +18,21 @@ databasename to your needs):
 4. CREATE DATABASE databasename OWNER username ENCODING 'UTF8';
 
 If using Sqlite, create your database file:
+cd $MOKSHA_HOME
 sqlite3 moksha.db
-
-Then configure for it in $MOKSHA_HOME/moksha.conf
 
 You can create the database tables by executing the 
 command-line in the file: 
-$MOKSHA_HOME/db/create_database_from_schema.txt. 
-You need to be in the moksha directory when you run the code.
+
+$MOKSHA_HOME/db/create_database_from_schema.txt
+ 
+You need to be in the $MOKSHA_HOME directory when you run the 
+command-line.
 
 Once your database and tables are created, populate the tables
 by executing the sql statements, in order, in the sql files
 in $MOKSHA_HOME/db directory using the following command and flags;
-modify to suit your settings. 
+modify to suit your settings. For Postgresql:
 
 psql -U moksha -d moksha -f $MOKSHA_HOME/db/10_insert_users.sql
 psql -U moksha -d moksha -f $MOKSHA_HOME/db/20_insert_roles.sql
@@ -39,6 +40,14 @@ psql -U moksha -d moksha -f $MOKSHA_HOME/db/30_insert_user_roles.sql
 psql -U moksha -d moksha -f $MOKSHA_HOME/db/40_insert_auth_questions.sql
 psql -U moksha -d moksha -f $MOKSHA_HOME/db/50_insert_inq_types.sql
 psql -U moksha -d moksha -f $MOKSHA_HOME/db/60_insert_inq_belief_sub_qs.sql
+
+For SQLite:
+
+cd $MOKSHA_HOME
+sqlite3 moksha.db < db/10_insert_users.sql
+sqlite3 moksha.db < db/20_insert_roles.sql
+sqlite3 moksha.db < db/30_insert_user_roles.sql
+etc.
 
 
 Run script/moksha_server.pl to test the application.

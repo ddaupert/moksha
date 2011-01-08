@@ -4,6 +4,8 @@ use HTML::FormHandler::Moose;
 
 extends 'Moksha::Form::User';
 
+has 'authcode' => ( isa => 'Int', is => 'rw' );
+
 has_field 'submit' => ( type => 'Submit', value => 'Register' );
 
 after 'setup_form' => sub {
@@ -11,6 +13,11 @@ after 'setup_form' => sub {
   my $item = $self->item;
 
   $self->field('active')->value( '0' );
+};
+
+before 'update_model' => sub {
+    my $self = shift;
+    $self->item->authcode( $self->authcode );
 };
 
 no HTML::FormHandler::Moose;

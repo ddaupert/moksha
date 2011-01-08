@@ -57,6 +57,10 @@ sub register : Chained('base') Args(0) {
 
 sub save : Private {
     my ($self, $c) = @_;
+    
+    my $authcode = $c->stash->{user_obj}->make_authcode();
+    
+    $c->log->debug("authcode: $authcode");
 
     my $form = 
       Moksha::Form::User::Register->new( 
@@ -66,7 +70,7 @@ sub save : Private {
 
     # the "process" call has all the saving logic,
     # if it returns False, then a validation error happened
-    return unless $form->process( params => $c->req->params  );
+    return unless $form->process( params => $c->req->params, authcode => $authcode );
 
     $c->flash->{info_msg} = "Registration has begun";
     $c->redirect_to_action('Registration', 'expect_email');
