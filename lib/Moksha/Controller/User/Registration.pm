@@ -87,6 +87,11 @@ sub save : Private {
 Private action, used to send validation email
 to registering user.
 
+# Uses Mail::Builder::Simple
+# See: Catalyst::Helper::Model::Email
+
+Uses Catalyst::View::Email::Template
+
 =cut
 
 sub send_email : Action {
@@ -102,6 +107,23 @@ sub send_email : Action {
   $c->log->debug("username: $username");
   $c->log->debug("email:    $email");
   $c->log->debug("authcode: $authcode");
+
+#  $c->model("Email1"->send(
+#    from      => 'no_reply@moksha.com',
+#    to        => "$email",
+#    subject   => 'New Member Validation from mokshaworks.com',
+#    plaintext => "Hello\n\nHow are you?\n\n",
+#  );
+
+  $c->stash->{email} = {
+      to       => "$email",
+      from     => 'no-reply@mokshaworks.com',
+      subject  => 'New Member Validation from mokshaworks',
+      template => 'user/registration/need_to_validate.tt2',
+      content_type => 'multipart/alternative',
+  };
+  
+  $c->forward( $c->view('Email::Template') );
 
 }
 
