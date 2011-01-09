@@ -56,46 +56,65 @@ sub register : Chained('base') Args(0) {
 ################
 
 sub save : Private {
-    my ($self, $c) = @_;
-    
-    my $authcode = $c->stash->{user_obj}->make_authcode();
-    
-    $c->log->debug("authcode: $authcode");
+  my ($self, $c) = @_;
+  
+  my $authcode = $c->stash->{user_obj}->make_authcode();
+  
+  $c->log->debug("authcode: $authcode");
 
-    my $form = 
-      Moksha::Form::User::Register->new( 
-        item => $c->stash->{user_obj} );
+  my $form = 
+    Moksha::Form::User::Register->new( 
+      item => $c->stash->{user_obj} );
 
-    $c->stash( form => $form, template => 'user/registration/save.tt2' );
+  $c->stash( form => $form, template => 'user/registration/save.tt2' );
 
-    # the "process" call has all the saving logic,
-    # if it returns False, then a validation error happened
-    return unless $form->process( params => $c->req->params, authcode => $authcode );
+  # the "process" call has all the saving logic,
+  # if it returns False, then a validation error happened
+  return unless $form->process( params => $c->req->params, authcode => $authcode );
 
-    $c->flash->{info_msg} = "Registration has begun";
-    $c->redirect_to_action('Registration', 'expect_email');
+  $c->forward('send_email', [qq/$authcode/]);
+
+  $c->flash->{info_msg} = "Registration has begun";
+  $c->stash->{template} = 'user/registration/expect_email.tt';
+
+}
+
+################
+################
+
+=head2 send_email
+
+Private action, used to send validation email
+to registering user.
+
+=cut
+
+sub send_email : Action {
+  my ( $self, $c, $authcode ) = @_;
+
+  my $fname    = $c->req->params->{fname};
+  my $lname    = $c->req->params->{lname};
+  my $username = $c->req->params->{username};
+  my $email    = $c->req->params->{email};
+
+  $c->log->debug("fname:    $fname");
+  $c->log->debug("lname:    $lname");
+  $c->log->debug("username: $username");
+  $c->log->debug("email:    $email");
+  $c->log->debug("authcode: $authcode");
+
 }
 
 ################
 ################
 
-# url /user/registration/expect_email
-sub expect_email :Path :Args(0) {
-    my ( $self, $c ) = @_;
-
-    $c->stash->{template} = 'user/registration/inform.tt2';
-
-}
+# url /user/registration/validate
+sub validate :Path :Args(0) {
+  my ( $self, $c ) = @_;
 
 
-################
-################
 
-# url /user/registration/verify
-sub verify :Path :Args(0) {
-    my ( $self, $c ) = @_;
-
-    $c->stash->{template} = 'user/registration/inform.tt2';
+  $c->stash->{template} = 'user/registration/validate.tt2';
 
 }
 
