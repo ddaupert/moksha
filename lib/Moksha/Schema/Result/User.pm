@@ -16,7 +16,7 @@ __PACKAGE__->add_columns(
   "email",     { data_type => "VARCHAR", is_nullable => 0, size => 70 },
   "password",  { data_type => "VARCHAR", is_nullable => 0, size => 20 },
   "is_member", { data_type => "BOOLEAN", is_nullable => 1, size => undef },
-  "authcode",  { data_type => "INTEGER", is_nullable => 1, size => undef },
+  "authcode",  { data_type => "VARCHAR", is_nullable => 1, size => 40 },
   "active",    { data_type => "INTEGER", is_nullable => 0, default => 1 },
   "created",   { data_type => "datetime", set_on_create => 1 },
   "updated",   { data_type => "datetime", set_on_create => 1, set_on_update => 1 },
@@ -81,9 +81,9 @@ Authcode will be used for validating registrant.
 sub make_authcode {
   my ($self) = @_;
   
-  #my @chars = ( "A" .. "Z", "a" .. "z", 0 .. 9 );
-  my @chars = ( 0 .. 9 );
-  my $authcode = join( "", @chars[ map { rand @chars } 1 .. 10 ]);
+  my @chars = ( "A" .. "Z", "a" .. "z", 0 .. 9 );
+#   my @chars = ( 0 .. 9 );
+  my $authcode = join( "", @chars[ map { rand @chars } 1 .. 40 ]);
   
   return( $authcode );
 

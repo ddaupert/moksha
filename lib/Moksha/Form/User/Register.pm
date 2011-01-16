@@ -4,7 +4,7 @@ use HTML::FormHandler::Moose;
 
 extends 'Moksha::Form::User';
 
-has 'authcode' => ( isa => 'Int', is => 'rw' );
+has 'authcode' => ( isa => 'Str', is => 'rw' );
 
 has_field 'submit' => ( type => 'Submit', value => 'Register' );
 

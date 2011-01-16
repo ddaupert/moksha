@@ -1,2 +1,2 @@
 INSERT INTO users (id,fname,lname,username,email,password,is_member,active,created,updated) VALUES(1,'admin','admin','admin','admin@moksha.com','secret','y',1,'2010-03-29 17:08:12','2010-03-29 17:08:12'); 
-INSERT INTO users (id,fname,lname,username,email,password,is_member,active,created,updated) VALUES(2,'Is','Member','ismember','ismember@moksha.com','secret','y',1,'2010-03-29 17:08:12','2010-03-29 17:08:12');
+INSERT INTO users (id,fname,lname,username,email,password,is_member,active,created,updated) VALUES(2,'Al','Member','amember','amember@moksha.com','secret','y',1,'2010-03-29 17:08:12','2010-03-29 17:08:12');
