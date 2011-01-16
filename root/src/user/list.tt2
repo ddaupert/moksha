@@ -5,6 +5,7 @@
 <div class="user">
   <h3>[% user.fname %] [% user.lname %] :: [% user.username %]
     <a href="[% c.action_uri('User', 'edit', [user.id]) %]">[edit]</a>
+    <a href="[% c.action_uri('User', 'delete', [user.id]) %]">[delete]</a>
   </h3>
     <hr />
 </div>

@@ -112,14 +112,14 @@ sub has_role {
 
 =head2 op_by_admin
 
-Can the specified user delete the current object?
+Can the specified user perform the operation?
 
 =cut
 
 sub op_by_admin {
   my ($self, $user) = @_;
 
-  # Only allow delete if user has one of these roles
+  # Only allow if user has one of these roles
   my $has_roles = $user->has_role('is_admin') ||
                   $user->has_role('is_superuser');
   
