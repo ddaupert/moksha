@@ -115,15 +115,15 @@ sub send_email : Action {
 #    plaintext => "Hello\n\nHow are you?\n\n",
 #  );
 
-  $c->stash->{email} = {
-      to       => "$email",
-      from     => 'no-reply@mokshaworks.com',
-      subject  => 'New Member Validation from mokshaworks',
-      template => 'user/registration/need_to_validate.tt2',
-      content_type => 'multipart/alternative',
-  };
+#   $c->stash->{email} = {
+#       to       => "$email",
+#       from     => 'no-reply@mokshaworks.com',
+#       subject  => 'New Member Validation from mokshaworks',
+#       template => 'user/registration/need_to_validate.tt2',
+#       content_type => 'multipart/alternative',
+#   };
   
-  $c->forward( $c->view('Email::Template') );
+#   $c->forward( $c->view('Email::Template') );
 
 }
 
