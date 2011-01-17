@@ -70,56 +70,49 @@ Check if there is a user and, if not, forward to login page
 # See the 'Actions' section of 'Catalyst::Manual::Intro' for more info.
 
 sub auto : Private {
-    my ($self, $c) = @_;
+  my ($self, $c) = @_;
 
-    # Allow unauthed users to reach the main site frontpage
-    # This is locked down to a single action
-    if ($c->action eq $c->controller('Root')->action_for('index')
-       ) {
-      $c->log->debug('*** Root::auto MATCH index action ');
-      return 1;
-    }
+  # Allow unauthed users to reach the main site frontpage
+  # This is locked down to a single action
+  if ($c->action eq $c->controller('Root')->action_for('index')
+      ) {
+    $c->log->debug('*** Root::auto MATCH index action ');
+    return 1;
+  }
 
-    if ($c->req->path eq '/'  ) {
-      $c->log->debug('*** Root::auto path MATCH / ');
-      return 1;
-    }
+  if ($c->req->path eq '/'  ) {
+    $c->log->debug('*** Root::auto path MATCH / ');
+    return 1;
+  }
 
-    # Allow unauthed users to reach the registration area
-    if ( $c->req->path =~ m/registration/ ) {
-      $c->log->debug('*** Root::auto MATCH registration area ');
-      return 1;
-    }
+  # Allow unauthed users to reach the registration area
+  if ( $c->req->path =~ m/registration/ ) {
+    $c->log->debug('*** Root::auto MATCH registration area ');
+    return 1;
+  }
 
+  # Allow unauthenticated users to reach the login page.  This
+  # allows unauthenticated users to reach any action in the Login
+  # controller.  To lock it down to a single action, we could use:
+  #   if ($c->action eq $c->controller('Login')->action_for('index'))
+  # to only allow unauthenticated access to the 'index' action we
+  # added above.
+  if ($c->controller eq $c->controller('Login')) {
+    return 1;
+  }
 
-    # Allow unauthenticated users to reach the login page.  This
-    # allows unauthenticated users to reach any action in the Login
-    # controller.  To lock it down to a single action, we could use:
-    #   if ($c->action eq $c->controller('Login')->action_for('index'))
-    # to only allow unauthenticated access to the 'index' action we
-    # added above.
-    if ($c->controller eq $c->controller('Login')) {
-        return 1;
-    }
-
-    # If a user doesn't exist, force login
-    if (!$c->user_exists) {
-        # Dump a log message to the development server debug output
-        $c->log->debug('***Root::auto User not found, forwarding to /login');
-        # Redirect the user to the login page
-        $c->response->redirect($c->uri_for('/login'));
-        # Return 0 to cancel 'post-auto' processing and prevent use of application
-        return 0;
-    }
-    elsif ($c->user_exists) {
-      $c->stash->{fname}   = $c->user->obj->fname;
-      $c->stash->{lname}   = $c->user->obj->lname;
-      $c->stash->{user_id} = $c->user->obj->id;
-
-      # User found, so return 1 to continue with processing after this 'auto'
-      return 1;
-    }
-
+  # If a user doesn't exist, force login
+  if (!$c->user_exists) {
+    $c->log->debug('***Root::auto User not found, forwarding to /login');
+    $c->response->redirect($c->uri_for('/login'));
+    return 0;
+  }
+  elsif ($c->user_exists) {
+    $c->stash->{fname}   = $c->user->obj->fname;
+    $c->stash->{lname}   = $c->user->obj->lname;
+    $c->stash->{user_id} = $c->user->obj->id;
+    return 1;
+  }
 
 }
 

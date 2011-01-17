@@ -45,7 +45,7 @@ has_field 'password' => ( type => 'Password',
 has_field 'password2' => ( type => 'PasswordConf' );
 has_field 'active'    => ( type => 'Hidden', 
                            required => 1, 
-                           default => 1 );
+                           default => 0 );
 
 
 no HTML::FormHandler::Moose;

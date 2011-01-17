@@ -15,7 +15,7 @@ __PACKAGE__->add_columns(
   "username",  { data_type => "VARCHAR", is_nullable => 0, size => 20 },
   "email",     { data_type => "VARCHAR", is_nullable => 0, size => 70 },
   "password",  { data_type => "VARCHAR", is_nullable => 0, size => 20 },
-  "is_member", { data_type => "BOOLEAN", is_nullable => 1, size => undef },
+  "is_member", { data_type => "BOOLEAN", is_nullable => 1, size => undef, default => 'n' },
   "authcode",  { data_type => "VARCHAR", is_nullable => 1, size => 40 },
   "active",    { data_type => "INTEGER", is_nullable => 0, default => 1 },
   "created",   { data_type => "datetime", set_on_create => 1 },
