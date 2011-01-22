@@ -108,22 +108,22 @@ sub send_email : Action {
   $c->log->debug("email:    $email");
   $c->log->debug("authcode: $authcode");
 
-#  $c->model("Email1"->send(
-#    from      => 'no_reply@moksha.com',
-#    to        => "$email",
-#    subject   => 'New Member Validation from mokshaworks.com',
-#    plaintext => "Hello\n\nHow are you?\n\n",
-#  );
-
-#   $c->stash->{email} = {
-#       to       => "$email",
-#       from     => 'no-reply@mokshaworks.com',
-#       subject  => 'New Member Validation from mokshaworks',
-#       template => 'user/registration/need_to_validate.tt2',
-#       content_type => 'multipart/alternative',
-#   };
+  $c->stash->{email} = {
+      to       => "$email",
+      from     => 'no-reply@localhost',
+      subject  => 'New Member Validation from mokshaworks',
+      template => 'user/registration/need_to_validate.tt2',
+      content_type => 'multipart/alternative',
+  };
   
 #   $c->forward( $c->view('Email::Template') );
+
+  if ( scalar( @{ $c->error } ) ) {
+      $c->error(0); # Reset the error condition if you need to
+      $c->response->body('An email error occurred!');
+  } else {
+      $c->response->body('Email sent A-OK! (At least as far as we can tell)');
+  }
 
 }
 

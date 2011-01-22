@@ -5,7 +5,7 @@ BEGIN {
 }
 
 use Catalyst::ScriptRunner;
-Catalyst::ScriptRunner->run('moksha', 'Server');
+Catalyst::ScriptRunner->run('Moksha', 'Server');
 
 1;
 
