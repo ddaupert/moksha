@@ -1,3 +1,10 @@
+<script language="javascript" type="text/javascript">
+  ;(function ($) {
+    $(function () {
+      jQuery(".wymeditor").wymeditor();
+    });
+  })(jQuery)
+</script>
 <h2>[% blog_obj.name %]</h2>
 <p>&nbsp;</p>
 <h3>
@@ -5,23 +12,30 @@
   [% ELSE %]Adding a new entry [% END %]
 </h3>
 
-[% form.render %]
+<form id="form_entry" method="post" >
+<fieldset class="main_fieldset">
+<div>
+[% f_content = form.field('content') -%]
+<textarea class="wymeditor" name="[% f_content.name -%]" id="[% f_content.name -%]" value="[% f_content.fif -%]" >
+</div>
+<div>
+[% f_blog = form.field('blog_id') -%]
+<input type="hidden" name="[% f_blog.name -%]" id="[% f_blog.name -%]" value="[% f_blog.fif -%]">
+</div>
+<div>
+[% f_user = form.field('user_id') -%]
+<input type="hidden" name="[% f_user.name -%]" id="[% f_user.name -%]" value="[% f_user.fif -%]">
+</div>
+<div>
+[% f_active = form.field('active') -%]
+<input type="hidden" name="[% f_active.name -%]" id="[% f_active.name -%]" value="[% f_active.fif -%]">
+</div>
+<div>
+[% f_submit = form.field('submit') -%]
+<input type="submit" class="wymupdate" name="[% f_submit.name -%]" id="[% f_submit.name -%]" class="wymupdate" value="Save">
+</div>
+</fieldset>
+</form>
 
-<script language="javascript" type="text/javascript">
-<!--
-$(function () {
-    $('#ts').datepicker({  dateFormat: 'yy-mm-dd', showOn: 'button', buttonText: 'Choose' });
 
-    var tags = [];
-    [% IF tags.count; FOREACH tag IN tags.all %]tags.push("[% tag.name %]");[% END; END %]
-
-    $('#tags_str').autocomplete(tags,
-	  {     autoFill: true,
-		selectFirst: true,
-		mustMatch: false,
-		multiple: true
-	  });
-});    
-//-->
-</script>
 

@@ -40,5 +40,5 @@ WYMeditor.STRINGS['fi'] = {
     Containers:       'Muotoilut',
     Classes:          'Luokat',
     Status:           'Tila',
-    Source_Code:      'Lämokshakoodi'
+    Source_Code:      'Lähdekoodi'
 };

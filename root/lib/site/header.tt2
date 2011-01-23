@@ -6,15 +6,14 @@
     <link rel="stylesheet" type="text/css" media="screen" 
     href="[% c.uri_for('/static/css/styles.css') %]" />
     <link rel="stylesheet" type="text/css" media="screen" 
-    href="[% c.uri_for('/static/css/javascript/base/jquery-ui.css') %]" />
+    href="[% c.uri_for('/static/css/javascript/base/jquery.ui.css') %]" />
     <link rel="stylesheet" type="text/css" media="screen" 
     href="[% c.uri_for('/static/css/javascript/base/jquery.ui.autocomplete.css') %]" />
 
     <script language="javascript" src="[% c.uri_for('/static/javascript/ext/jquery/jquery-1.4.4.min.js') %]"></script>
     <script language="javascript" src="[% c.uri_for('/static/javascript/ext/jquery-ui/ui/jquery.ui.core.js') %]"></script>
     <script language="javascript" src="[% c.uri_for('/static/javascript/ext/jquery-ui/ui/jquery.ui.autocomplete.js') %]"></script>
-    <script type="text/javascript" src="[% c.uri_for('/static/javascript/ext/jquery/wymeditor/jquery.wymeditor.pack.js') %]"></script>
-    <script language="javascript" src="[% c.uri_for('/static/javascript/ext/jquery/main.js') %]"></script>
+    <script type="text/javascript" src="[% c.uri_for('/static/javascript/ext/wymeditor/jquery.wymeditor.pack.js') %]"></script>
 
 <style type="text/css">
 /*********************/
@@ -45,13 +44,13 @@ p,h1,h2,h3,h4,h5,h5,ol,ul {
 #banner {
 clear: both;
 text-align: left;
-  background: url(images/bg/banner_bg.jpg) repeat-x left top;
+  /* background:  repeat-x left top; */
   position: relative;
   border: 1px solid black;
 }
 
 #logo {
-  background: url(images/mylogo80_xparent.gif) no-repeat left top;
+  background: url(/static/images/mylogo80_xparent.gif) no-repeat left top;
   height: 100px;
 }
 
