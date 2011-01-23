@@ -1,6 +1,7 @@
 # ignore dir where we keep notes
 *.off
 *.sh
+*.js
 docs/
 *.skip
 *.db
