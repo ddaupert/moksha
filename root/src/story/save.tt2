@@ -1,6 +1,9 @@
 <h2>
-  [% IF story_obj.id -%]Editing "[% story_obj.title -%]"
-  [% ELSE -%]Adding a new story[% END -%]
+  [% IF story_obj.id -%]
+    Editing "[% story_obj.title -%]"
+  [% ELSE -%]
+    Adding a new story
+  [% END -%]
 </h2>
 [% IF quote_obj.id -%]
 <br />

@@ -1,7 +1,10 @@
-<h1>
-  [% IF quote_obj.quote_id %]Editing "[% quote_obj.title %]"
-  [% ELSE %]Adding a new quote[% END %]
-</h1>
+<h2>
+  [% IF quote_obj.quote_id -%]
+    Editing "[% quote_obj.title -%]"
+  [% ELSE -%]
+    Adding a new quote
+  [% END -%]
+</h2>
 <form id="form_quote" method="post" >
 <fieldset class="main_fieldset">
 <div>

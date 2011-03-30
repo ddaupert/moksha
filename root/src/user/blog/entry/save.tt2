@@ -1,22 +1,21 @@
-<script language="javascript" type="text/javascript">
-  ;(function ($) {
-    $(function () {
-      jQuery(".wymeditor").wymeditor();
-    });
-  })(jQuery)
-</script>
 <h2>[% blog_obj.name %]</h2>
 <p>&nbsp;</p>
 <h3>
-  [% IF entry_obj.entry_id %]Editing "[% entry_obj.title %]"
-  [% ELSE %]Adding a new entry [% END %]
+  [% IF entry_obj.entry_id %]
+    Editing "[% entry_obj.title %]"
+  [% ELSE %]
+    Adding a new entry 
+  [% END %]
 </h3>
 
 <form id="form_entry" method="post" >
 <fieldset class="main_fieldset">
 <div>
 [% f_content = form.field('content') -%]
-<textarea class="wymeditor" name="[% f_content.name -%]" id="[% f_content.name -%]" value="[% f_content.fif -%]" >
+<label class="label" for="[% f_content.name -%]">[% f_content.label -%]:</label>
+<textarea name="[% f_content.name -%]" id="[% f_content.name -%]" class="wymeditor">
+[% f_content.fif -%]
+</textarea>
 </div>
 <div>
 [% f_blog = form.field('blog_id') -%]
@@ -37,5 +36,21 @@
 </fieldset>
 </form>
 
+<script language="javascript" type="text/javascript">
+<!--
+$(function () {
 
+    jQuery(".wymeditor").wymeditor();
 
+    var tags = [];
+    [% IF tags.count; FOREACH tag IN tags.all -%]tags.push("[% tag.name -%]");[% END; END -%]
+
+    $('#tags_str').autocomplete(tags,
+	  {     autoFill: true,
+		selectFirst: true,
+		mustMatch: false,
+		multiple: true
+	  });
+});    
+//-->
+</script>

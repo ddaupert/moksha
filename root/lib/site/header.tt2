@@ -10,6 +10,9 @@
     <link rel="stylesheet" type="text/css" media="screen" 
     href="[% c.uri_for('/static/css/javascript/base/jquery.ui.autocomplete.css') %]" />
 
+    <link rel="stylesheet" type="text/css" media="screen" 
+    href="[% c.uri_for('/static/javascript/ext/wymeditor/skins/default/skin.css') %]" />
+
     <script language="javascript" src="[% c.uri_for('/static/javascript/ext/jquery/jquery-1.4.4.min.js') %]"></script>
     <script language="javascript" src="[% c.uri_for('/static/javascript/ext/jquery-ui/ui/jquery.ui.core.js') %]"></script>
     <script language="javascript" src="[% c.uri_for('/static/javascript/ext/jquery-ui/ui/jquery.ui.autocomplete.js') %]"></script>
