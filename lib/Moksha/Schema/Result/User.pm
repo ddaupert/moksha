@@ -120,8 +120,8 @@ sub op_by_admin {
   my ($self, $user) = @_;
 
   # Only allow if user has one of these roles
-  my $has_roles = $user->has_role('is_admin') ||
-                  $user->has_role('is_superuser');
+  my $has_roles = $user->has_role('admin') ||
+                  $user->has_role('superuser');
   
   return( $has_roles );
 }

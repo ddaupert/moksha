@@ -18,7 +18,7 @@ by [% story.m2m_authors.fname %] [% story.m2m_authors.lname %]
     <a href="[% c.action_uri('Story', 'edit', [story.id]) %]">[edit]</a>
     [% END %]
     <a href="[% c.action_uri('Story', 'view', [story.id]) %]">[view]</a>
-[% IF c.check_user_roles('is_superuser') OR c.check_user_roles('is_admin') %]
+[% IF c.check_user_roles('superuser') OR c.check_user_roles('admin') %]
     <a href="[% c.action_uri('Story', 'delete', [story.id]) %]">[delete]</a>
 [% END %]
   </p>

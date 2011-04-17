@@ -71,8 +71,8 @@ sub edit : Chained('id') {
 sub save : Private {
     my ($self, $c) = @_;
 
-  if ($c->check_user_roles('is_superuser') ||
-      $c->check_user_roles('is_admin') 
+  if ($c->check_user_roles('superuser') ||
+      $c->check_user_roles('admin') 
     ) {
 
     my $form = Moksha::Form::Role->new( item => $c->stash->{role_obj}  );
