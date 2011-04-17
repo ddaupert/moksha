@@ -39,7 +39,7 @@ sub index :Path :Args(0) {
                            password => $password  } )) {
 
       if ( $c->user->obj->active == 1
-        && $c->user->obj->member =~ m/y/i ) {
+        && $c->user->obj->is_member =~ m/y/i ) {
 
         $c->response->redirect($c->uri_for('/'));
 

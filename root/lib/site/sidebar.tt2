@@ -2,7 +2,10 @@
 [% SET user_id = c.user.id -%]
 <h3>Welcome [% c.user.fname %]</h3>
 [% SET user_id = c.user.id -%]
-<p><a href="[% c.uri_for("/users/$user_id/profile") %]">My Profile</a></p>
+<p><a href="[% c.uri_for("/user/$user_id/profile") %]">My Profile</a></p>
+<p><a href="[% c.uri_for("/user/$user_id/blog/list") %]">My Blogs</a></p>
+<p><a href="[% c.uri_for("/user/$user_id/story/list") %]">My Stories</a></p>
+<p><a href="[% c.uri_for("/user/$user_id/photo/list") %]">My Photos</a></p>
 <p><a href="[% c.uri_for('/logout') %]">Logout</a></p>
 [% ELSE %]
 <p><a href="[% c.uri_for('/login') %]">Login</a></p>
